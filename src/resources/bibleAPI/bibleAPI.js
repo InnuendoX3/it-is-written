@@ -56,9 +56,9 @@ const bibleAPI = () => {
   }
 
   // Passage: range of verses when looking for a grouping (i.e. MAT.1.12-MAT.1.20)
-  const getPassage = async (bibleAbbr, versesRange) => {
+  const getPassage = async (bibleAbbr, passageRange) => {
     const bibleId = _getBibleID (bibleAbbr)
-    const passageUrl = `${BASE_URL}/v1/bibles/${bibleId}/passages/${versesRange}`
+    const passageUrl = `${BASE_URL}/v1/bibles/${bibleId}/passages/${passageRange}`
     
     return _makeAPIRequest(passageUrl)
   }
