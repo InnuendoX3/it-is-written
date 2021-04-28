@@ -1,6 +1,7 @@
 const axios = require('axios').default
 
-const {BASE_URL, BIBLES} = require('./constans')
+const { BASE_URL, BIBLES } = require('./constants')
+const { ErrorResponse } = require('../../controllers/ResponseHandler')
 
 const bibleAPI = () => {
 
@@ -15,11 +16,16 @@ const bibleAPI = () => {
   const _makeAPIRequest = async url => {
     return axios.get(url, _getHeaders())
     .then( response => response.data.data)
-    .catch( error => console.error(error))  
+    .catch( error => {
+      const errorStatus = error.response.data.statusCode
+      const errorMessage = error.response.data.message
+      throw ErrorResponse( errorStatus, `Error from Bible API: ${errorMessage}`)
+    })
   }
 
   const _getBibleID = bibleAbbr => {
     const bible = BIBLES.find( ({ abbreviation }) => abbreviation === bibleAbbr)
+    if(!bible) throw ErrorResponse(400, 'Bible abbreviation not found on Bible list')
     return bible.id
   }
 
@@ -58,7 +64,7 @@ const bibleAPI = () => {
   // Passage: range of verses when looking for a grouping (i.e. MAT.1.12-MAT.1.20)
   const getPassage = async (bibleAbbr, passageRange) => {
     const bibleId = _getBibleID (bibleAbbr)
-    const passageUrl = `${BASE_URL}/v1/bibles/${bibleId}/passages/${passageRange}`
+    const passageUrl = `${BASE_URL}/v1/bibles/${bibleId}/passages/${passageRange}` //passages
     
     return _makeAPIRequest(passageUrl)
   }
