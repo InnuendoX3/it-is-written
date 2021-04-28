@@ -10,5 +10,7 @@ routes.get('/bibles/:bibleAbbr/chapters/:chapterId/verses', ExternAPIController.
 routes.get('/bibles/:bibleAbbr/verses/:verseId', ExternAPIController.getVerse)
 routes.get('/bibles/:bibleAbbr/passages/:passageRange', ExternAPIController.getPassage)
 
+routes.all('*', (_, res) => res.status(404).send('Page Not Found'))
+
 
 module.exports = routes

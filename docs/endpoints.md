@@ -127,7 +127,7 @@ Return a single verse
 #### GET /api/bibles/:bibleAbbr/passages/:passageRange
 Return a passage.
 Passage is the text between two verses.
-passageRange is composed by two verses. Ex: *LUK.11.15-LUK.11.18*
+*passageRange* is composed by two verses. Ex: *LUK.11.15-LUK.11.18*
 > Output
 ```json
 {
