@@ -1,5 +1,8 @@
 const bibleAPI = require('../resources/bibleAPI/bibleAPI')
+
 const { ResponseHandler } = require('./ResponseHandler')
+const { cleanCopyrightText } = require('../resources/textFormat')
+
 const { BIBLES } = require('../resources/bibleAPI/constants')
 
 //// PRIVATE
@@ -117,7 +120,7 @@ const getVerse = async (req, res) => {
       id: verseFromApi.id,
       reference: verseFromApi.reference,
       content: verseFromApi.content,
-      copyright: verseFromApi.copyright
+      copyright: cleanCopyrightText(verseFromApi.copyright)
     }
     const body = {
       bible: _findBibleByAbbreviature(bibleAbbr),
@@ -142,7 +145,7 @@ const getPassage = (req, res) => {
       id: passageFromApi.id,
       reference: passageFromApi.reference,
       content: passageFromApi.content,
-      copyright: passageFromApi.copyright
+      copyright: cleanCopyrightText(passageFromApi.copyright)
     }
     const body = {
       bible: _findBibleByAbbreviature(bibleAbbr),
