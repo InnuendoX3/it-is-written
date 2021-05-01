@@ -1,13 +1,12 @@
 
-// Clean from new lines and consecutive blank spaces
-// As it comes from Bible API
+// Bible API sends Copyright text with lots of blank spaces
 const cleanCopyrightText = (text) => {
-  const newLines = new RegExp('\\n', 'g')
-  const consecutiveBlankSpaces = new RegExp('\\s{2,}', 'g')
+  const newLinesPattern = new RegExp('\\n', 'g')
+  const consecutiveBlankSpacesPattern = new RegExp('\\s{2,}', 'g')
 
   const result = text
-    .replace(newLines, '')
-    .replace(consecutiveBlankSpaces, ' ')
+    .replace(newLinesPattern, '')
+    .replace(consecutiveBlankSpacesPattern, ' ')
     .trim()
 
   return result
