@@ -144,3 +144,50 @@ Passage is the text between two verses.
 }
 ```
 
+#### POST /api/texts/compare
+Return the results of comparing the Bible text with the written by the user
+> Body
+```json
+{
+	"bibleText": "Jesus said to his disciples: If you love me, you will do as I command.",
+	"userText": "Jesus said to his people: If you love me, you will do as I say."
+}
+```
+> Output
+```json
+{
+  "differences": [
+    {
+      "count": 4,
+      "value": ["Jesus", "said", "to", "his"]
+    },
+    {
+      "count": 1,
+      "removed": true,
+      "value": ["disciples:"]
+    },
+    {
+      "count": 1,
+      "added": true,
+      "value": ["people:"]
+    },
+    {
+      "count": 9,
+      "value": ["If", "you", "love", "me,", "you", "will", "do", "as", "I"]
+    },
+    {
+      "count": 1,
+      "removed": true,
+      "value": ["command."]
+    },
+    {
+      "count": 1,
+      "added": true,
+      "value": ["say."]
+    }
+  ],
+  "percentage": 87,
+  "bibleTextWordsQty": 15,
+  "matchedWords": 13
+}
+```
