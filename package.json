@@ -2,10 +2,10 @@
   "name": "itiswritten",
   "version": "1.0.0",
   "description": "Bible verse training",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "author": "Johan Garzon",
   "license": "ISC",
