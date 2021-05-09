@@ -1,5 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+
+import { BibleContext } from '../../contexts/BibleContext'
 import BibleList from './BibleList'
 import BookList from './BookList'
 import ChapterList from './ChapterList'
@@ -7,6 +10,7 @@ import VerseList from './VerseList'
 
 
 export default function SelectPassage () {
+  const {passage, setPassage} = useContext(BibleContext)
 
   const [bibles, setBibles] = useState(null)
   const [bibleSelected, setBibleSelected] = useState(null)
@@ -17,14 +21,7 @@ export default function SelectPassage () {
   const [verses, setVerses] = useState(null)
   const [initialVerse, setInitialVerse] = useState(null)
   const [finalVerse, setFinalVerse] = useState(null)
-  const [passage, setPassage] = useState(null)
 
-
-  function getVerseInHTML() {
-    return {
-      __html: passage.content
-    }
-  }
 
 
   useEffect(() => {
@@ -44,17 +41,17 @@ export default function SelectPassage () {
     console.log('useEffect finalVerse null')
     if(finalVerse) {
       console.log('useEffect finalVerse NO null')
+
       function getPassage() {
         const abbr = bibleSelected.abbreviation
         const initialVerseId = initialVerse.id
         const finalVerseId = finalVerse.id
     
         const url = `/api/bibles/${abbr}/passages/${initialVerseId}-${finalVerseId}`
-        console.log('url', url)
         
         axios(url)
           .then( res => {
-            console.log(res.data.passage)
+            console.log('res.data.passage axios', res.data.passage)
             setPassage(res.data.passage)
           })
           .catch( error => console.log(error))
@@ -62,14 +59,10 @@ export default function SelectPassage () {
 
       getPassage()
     }
-  }, [finalVerse, bibleSelected, initialVerse])
+  }, [finalVerse, bibleSelected, initialVerse, setPassage])
 
   function ShowPassageInfo() {
     const bibleInfo = bibleSelected ? bibleSelected.name : ''
-/*     const bookInfo = bookSelected ? bookSelected.name : ''
-    const chapterInfo = chapterSelected ? chapterSelected.number : ''
-    const initialVerseInfo = initialVerse ? initialVerse.reference : ''
-    const finalVerseInfo = finalVerse ? finalVerse.reference : '' */
     const passageInfo = passage ? passage.reference : ''
 
     return (
@@ -102,7 +95,7 @@ export default function SelectPassage () {
 
       <ShowPassageInfo />
 
-      { passage && <p dangerouslySetInnerHTML={getVerseInHTML()} /> }
+      { passage && <Link to="/practice">Practice</Link> }
 
     </div>
   )

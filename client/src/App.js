@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Routes from './components/routes'
+import BibleProvider from './contexts/BibleContext'
 
 import './App.css';
 
@@ -8,7 +9,9 @@ function App() {
 
   return (
     <>
-      <Routes />
+      <BibleProvider>
+        <Routes />
+      </BibleProvider>
     </>
   )
 }

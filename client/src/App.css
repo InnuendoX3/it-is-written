@@ -38,5 +38,8 @@
 }
 
 .little-spc {
-  margin: 1vh 0;
+  padding: 1vh 0;
+}
+.v {
+  display: none;
 }
