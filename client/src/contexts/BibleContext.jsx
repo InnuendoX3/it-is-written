@@ -5,13 +5,16 @@ export const BibleContext = createContext(null)
 function BibleProvider({children}) {
 
   const [passage, setPassage] = useState(null)
-  const [passagePlainText, setPassagePlainText] = useState(null)
+  const [userText, setUserText] = useState('')
+  const [textDiff, setTextDiff] = useState(null)
 
   const contextValues = {
     passage,
     setPassage,
-    passagePlainText,
-    setPassagePlainText
+    userText,
+    setUserText,
+    textDiff,
+    setTextDiff
   }
 
   return (
