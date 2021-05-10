@@ -55,3 +55,52 @@
   "copyright": "Dr. Jonathan Gallagher. Released under Creative Commons Attribution-ShareAlike 4.0 Unported License. Version 3.1 beta. For corrections send email to jonathangallagherfbv@gmail.com"
 }
 ```
+
+### A Diff
+```json
+{
+  "differences": [
+    {
+      "count": 4,
+      "value": [
+        "Jesus",
+        "said",
+        "to",
+        "his"
+      ]
+    },
+    {
+      "count": 1,
+      "removed": true,
+      "value": [
+        "disciples:"
+      ]
+    },
+    {
+      "count": 1,
+      "added": true,
+      "value": [
+        "people:"
+      ]
+    },
+    {
+      "count": 10,
+      "value": [
+        "If",
+        "you",
+        "love",
+        "me,",
+        "you",
+        "will",
+        "do",
+        "as",
+        "I",
+        "command."
+      ]
+    }
+  ],
+  "percentage": 94,
+  "bibleTextWordsQty": 15,
+  "matchedWords": 14
+}
+```
