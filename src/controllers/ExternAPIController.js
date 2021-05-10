@@ -1,7 +1,7 @@
 const bibleAPI = require('../resources/bibleAPI/bibleAPI')
 
 const { ResponseHandler } = require('./ResponseHandler')
-const { cleanCopyrightText } = require('../resources/textFormat')
+const { cleanCopyrightText, htmlPassageToText } = require('../resources/textFormat')
 
 const { BIBLES } = require('../resources/bibleAPI/constants')
 
@@ -145,6 +145,7 @@ const getPassage = (req, res) => {
       id: passageFromApi.id,
       reference: passageFromApi.reference,
       content: passageFromApi.content,
+      contentPlainText : htmlPassageToText(passageFromApi.content),
       copyright: cleanCopyrightText(passageFromApi.copyright)
     }
     const body = {
