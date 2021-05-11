@@ -1,4 +1,4 @@
-import React, { useContext, useState, useCallback } from 'react'
+import React, { useContext } from 'react'
 import { BibleContext } from '../../contexts/BibleContext'
 
 export default function BibleVerse(props) {
