@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import axios from 'axios'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 import { BibleContext } from '../../contexts/BibleContext'
 import BibleList from './BibleList'
@@ -12,35 +12,56 @@ import VerseList from './VerseList'
 export default function SelectPassage () {
   const {passage, setPassage} = useContext(BibleContext)
 
-  const [bibles, setBibles] = useState(null)
-  const [bibleSelected, setBibleSelected] = useState(null)
-  const [books, setBooks] = useState(null)
-  const [bookSelected, setBookSelected] = useState(null)
-  const [chapters, setChapters] = useState(null)
-  const [chapterSelected, setChapterSelected] = useState(null)
-  const [verses, setVerses] = useState(null)
-  const [initialVerse, setInitialVerse] = useState(null)
-  const [finalVerse, setFinalVerse] = useState(null)
+  //const [bibles, setBibles] = useState(null)
+  //const [bibleSelected, setBibleSelected] = useState(null)
+  //const [books, setBooks] = useState(null)
+  //const [bookSelected, setBookSelected] = useState(null)
+  //const [chapters, setChapters] = useState(null)
+  //const [chapterSelected, setChapterSelected] = useState(null)
+  //const [verses, setVerses] = useState(null)
+  //const [initialVerse, setInitialVerse] = useState(null)
+  //const [finalVerse, setFinalVerse] = useState(null)
+
+  const [selection, setSelection] = useState(
+    {
+      bible: null,
+      book: null,
+      chapter: null,
+      initialVerse: null,
+      finalVerse: null
+    }
+  )
+
+  const [content, setContent] = useState(
+    {
+      bibles: null,
+      books: null,
+      chapters: null,
+      verses: null
+    }
+  )
+
+  const { bibles, books, chapters, verses } = content
 
 
 
   useEffect(() => {
-    console.log('UseEffect on mount!')
     function getBibles() {
       axios('/api/bibles')
-      .then( res => {
-        //console.log('res.data', res.data)
-        setBibles(res.data)
-      })
+        .then( res => setContent({...content, bibles: res.data}))
+        .catch( error => console.log(error))
     }
     
     getBibles()
   }, [])
 
   useEffect(() => {
-    console.log('useEffect finalVerse null')
+    console.log('selection', selection)
+    console.log('content', content)
+  }, [selection, content])
+
+/*   useEffect(() => {
     if(finalVerse) {
-      console.log('useEffect finalVerse NO null')
 
       function getPassage() {
         const abbr = bibleSelected.abbreviation
@@ -59,9 +80,9 @@ export default function SelectPassage () {
 
       getPassage()
     }
-  }, [finalVerse, bibleSelected, initialVerse, setPassage])
+  }, [finalVerse, bibleSelected, initialVerse, setPassage]) */
 
-  function ShowPassageInfo() {
+/*   function ShowPassageInfo() {
     const bibleInfo = bibleSelected ? bibleSelected.name : ''
     const passageInfo = passage ? passage.reference : ''
 
@@ -70,30 +91,26 @@ export default function SelectPassage () {
         <span>{bibleInfo}</span> - <span>{passageInfo}</span>
       </p>
     )
-  }
+  } */
 
-  const bibleListProps = {bibles, setBibleSelected, setBooks}
-  const bookListProps = {books, setBookSelected, setChapters, bibleSelected}
-  const chapterListProps = {chapters, setChapterSelected, setVerses, bibleSelected}
-  const firstVerseListProps = {verses, setInitialVerse}
-  const secondVerseListProps = {verses, setFinalVerse, initialVerse}
+  const propsList = {content, setContent, selection, setSelection}
 
   return (
     <div className="App">
 
       <h1>Hello Father!!!</h1>
 
-      { bibles &&  <BibleList {...bibleListProps} /> }
+      { bibles && <BibleList {...propsList} /> }
 
-      { books && <BookList {...bookListProps} /> }
+      { books && <BookList {...propsList} /> }
 
-      { chapters &&  <ChapterList {...chapterListProps} /> }
+      { chapters && <ChapterList {...propsList} /> }
 
-      { verses &&  <VerseList {...firstVerseListProps} /> }
+      { verses && <VerseList {...propsList} isInitialVerseList={true} /> }
 
-      { initialVerse && <VerseList {...secondVerseListProps} /> }
+      { selection.initialVerse && <VerseList {...propsList} isFinalVerseList={true} /> }
 
-      <ShowPassageInfo />
+      {/* <ShowPassageInfo /> */}
 
       { passage && <Link to="/practice">Practice</Link> }
 
