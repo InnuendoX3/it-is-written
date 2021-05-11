@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
+import { Redirect } from 'react-router'
+import axios from 'axios'
+
+import { BibleContext } from '../../contexts/BibleContext'
 
 export default function VerseList(props) {
-  //const { verses, setInitialVerse, setFinalVerse, initialVerse } = props
+  const { setPassage } = useContext(BibleContext)
+  
   const { content, setContent, selection, setSelection, isInitialVerseList, isFinalVerseList } = props
-  const { initialVerse } = selection
+  const { initialVerse, finalVerse } = selection
 
-  const [verseNumberTitle, setverseNumberTitle] = useState(getTitle())
+  const [verseNumberTitle, setVerseNumberTitle] = useState(getTitle())
   const [isSelected, setIsSelected] = useState(false)
+  const [hasSelectedLastVerse, setHasSelectedLastVerse] = useState(false)
+  
 
   let verseList = content.verses
 
 
-
   if( isFinalVerseList ) {
-    console.log('entra al if preguntando si verseListType es final')
     verseList = listFromInitialVerse()
   }
   
@@ -33,31 +38,53 @@ export default function VerseList(props) {
 
     if(isInitialVerseList) {
       setSelection({...selection, initialVerse: verse})
+      setVerseNumberTitle(`From verse nr. ${verse.number}`)
+      setIsSelected(true)
     } else {
       setSelection({...selection, finalVerse: verse})
+      getPassage(verse)
     } 
   }
 
-  function handleOnTitleClick() {
-    console.log('noting')
+  function getPassage(finalVerse2) {
+    const abbr = selection.bible.abbreviation
+    const initialVerseId = initialVerse.id
+    const finalVerseId = finalVerse2.id
+
+    const url = `/api/bibles/${abbr}/passages/${initialVerseId}-${finalVerseId}`
+    
+    axios(url)
+      .then( res => {
+        console.log('res.data.passage axios', res.data.passage)
+        setPassage(res.data.passage)
+        setHasSelectedLastVerse(true)
+      })
+      .catch( error => console.log(error))
   }
 
-  useEffect(() => {
-
-  }, [initialVerse])
+  function handleOnTitleClick() {
+    setIsSelected(false)
+  }
 
   return (
-    <div className='little-spc'>
+    <div>
       <h3 onClick={handleOnTitleClick}>{verseNumberTitle}</h3>
 
-      { verseList.map( (verse, index) => {
-          return (
-            <button key={index} onClick={ e => selectVerse(verse, e)}>
-              {verse.number}
-            </button>
-          )
-        })        
+      { !isSelected &&
+        <div className='little-spc'>
+          { verseList.map( (verse, index) => {
+              return (
+                <button key={index} onClick={ e => selectVerse(verse, e)}>
+                  {verse.number}
+                </button>
+              )
+            })        
+          }
+        </div>
       }
+      
+      { hasSelectedLastVerse && <Redirect to='/practice' /> }
+
     </div>
   )
 }

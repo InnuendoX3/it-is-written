@@ -10,17 +10,7 @@ import VerseList from './VerseList'
 
 
 export default function SelectPassage () {
-  const {passage, setPassage} = useContext(BibleContext)
-
-  //const [bibles, setBibles] = useState(null)
-  //const [bibleSelected, setBibleSelected] = useState(null)
-  //const [books, setBooks] = useState(null)
-  //const [bookSelected, setBookSelected] = useState(null)
-  //const [chapters, setChapters] = useState(null)
-  //const [chapterSelected, setChapterSelected] = useState(null)
-  //const [verses, setVerses] = useState(null)
-  //const [initialVerse, setInitialVerse] = useState(null)
-  //const [finalVerse, setFinalVerse] = useState(null)
+  const { setUserText } = useContext(BibleContext)
 
   const [selection, setSelection] = useState(
     {
@@ -44,8 +34,8 @@ export default function SelectPassage () {
   const { bibles, books, chapters, verses } = content
 
 
-
   useEffect(() => {
+    console.log('useEffect del select, para resetear')
     function getBibles() {
       axios('/api/bibles')
         .then( res => setContent({...content, bibles: res.data}))
@@ -53,34 +43,9 @@ export default function SelectPassage () {
     }
     
     getBibles()
+    setUserText('') //reset
   }, [])
 
-  useEffect(() => {
-    console.log('selection', selection)
-    console.log('content', content)
-  }, [selection, content])
-
-/*   useEffect(() => {
-    if(finalVerse) {
-
-      function getPassage() {
-        const abbr = bibleSelected.abbreviation
-        const initialVerseId = initialVerse.id
-        const finalVerseId = finalVerse.id
-    
-        const url = `/api/bibles/${abbr}/passages/${initialVerseId}-${finalVerseId}`
-        
-        axios(url)
-          .then( res => {
-            console.log('res.data.passage axios', res.data.passage)
-            setPassage(res.data.passage)
-          })
-          .catch( error => console.log(error))
-      }
-
-      getPassage()
-    }
-  }, [finalVerse, bibleSelected, initialVerse, setPassage]) */
 
 /*   function ShowPassageInfo() {
     const bibleInfo = bibleSelected ? bibleSelected.name : ''
@@ -112,7 +77,7 @@ export default function SelectPassage () {
 
       {/* <ShowPassageInfo /> */}
 
-      { passage && <Link to="/practice">Practice</Link> }
+      {/* passage && <Link to="/practice">Practice</Link> */}
 
     </div>
   )
