@@ -7,8 +7,8 @@ import { BibleContext } from '../../contexts/BibleContext'
 export default function VerseList(props) {
   const { setPassage } = useContext(BibleContext)
   
-  const { content, setContent, selection, setSelection, isInitialVerseList, isFinalVerseList } = props
-  const { initialVerse, finalVerse } = selection
+  const { content, selection, setSelection, isInitialVerseList, isFinalVerseList } = props
+  const { initialVerse } = selection
 
   const [verseNumberTitle, setVerseNumberTitle] = useState(getTitle())
   const [isSelected, setIsSelected] = useState(false)
@@ -42,6 +42,7 @@ export default function VerseList(props) {
       setIsSelected(true)
     } else {
       setSelection({...selection, finalVerse: verse})
+      // ToDo: Use getPassage with the finalVerse from State Selection ?
       getPassage(verse)
     } 
   }
@@ -55,7 +56,6 @@ export default function VerseList(props) {
     
     axios(url)
       .then( res => {
-        console.log('res.data.passage axios', res.data.passage)
         setPassage(res.data.passage)
         setHasSelectedLastVerse(true)
       })

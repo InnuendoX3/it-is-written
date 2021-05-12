@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 import { BibleContext } from '../../contexts/BibleContext'
@@ -35,16 +34,17 @@ export default function SelectPassage () {
 
 
   useEffect(() => {
-    console.log('useEffect del select, para resetear')
-    function getBibles() {
+    console.log('Select useEffect activated (by content or setUserText?)')
+    async function getBibles() {
       axios('/api/bibles')
         .then( res => setContent({...content, bibles: res.data}))
         .catch( error => console.log(error))
     }
-    
+
     getBibles()
-    setUserText('') //reset
-  }, [])
+    setUserText('') // Reset user text
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
 
 
 /*   function ShowPassageInfo() {
