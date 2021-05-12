@@ -145,7 +145,6 @@ const getPassage = (req, res) => {
       id: passageFromApi.id,
       reference: passageFromApi.reference,
       content: htmlPassageToText(passageFromApi.content),
-      //contentPlainText : htmlPassageToText(passageFromApi.content),
       copyright: cleanCopyrightText(passageFromApi.copyright)
     }
     const body = {

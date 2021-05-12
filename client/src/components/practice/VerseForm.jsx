@@ -12,7 +12,7 @@ export default function VerseForm(props) {
     const url = `/api/texts/compare`
 
     const body = { 
-      bibleText: passage.contentPlainText,
+      bibleText: passage.content,
       userText: userText
      }
     

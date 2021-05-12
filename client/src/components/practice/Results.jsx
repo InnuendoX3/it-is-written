@@ -20,7 +20,7 @@ export default function Results(props) {
   return (
     <div>
       <h2>{passage.reference}</h2>
-      <p>{passage.contentPlainText}</p>
+      <p>{passage.content}</p>
       <h2>Your text:</h2>
       <p>{userText}</p>
 

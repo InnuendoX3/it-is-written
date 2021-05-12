@@ -11,12 +11,12 @@ export default function BibleVerse(props) {
     writtingMode
   } = props.modes
 
-  // To inject the content from API that comes in HTML
+/*   // To inject the content from API that comes in HTML
   // This is called dangerous HTML 
   const verseInHTML = {
     __html: passage.content
     //__html: '<span>This is some test text to test. To avoid so many API calls. Try to repeat it.</span>'
-  }
+  } */
   
   
 
@@ -27,7 +27,7 @@ export default function BibleVerse(props) {
 
   return (
     <div className='little-spc'>
-      <p dangerouslySetInnerHTML={verseInHTML} />
+      <p>{passage.content}</p>
       <button onClick={handleClick} >I'm ready!</button>
     </div>
   )
