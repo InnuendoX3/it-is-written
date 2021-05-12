@@ -119,7 +119,7 @@ const getVerse = async (req, res) => {
     const verse = {
       id: verseFromApi.id,
       reference: verseFromApi.reference,
-      content: verseFromApi.content,
+      content: htmlPassageToText(verseFromApi.content),
       copyright: cleanCopyrightText(verseFromApi.copyright)
     }
     const body = {
@@ -144,8 +144,8 @@ const getPassage = (req, res) => {
     const passage = {
       id: passageFromApi.id,
       reference: passageFromApi.reference,
-      content: passageFromApi.content,
-      contentPlainText : htmlPassageToText(passageFromApi.content),
+      content: htmlPassageToText(passageFromApi.content),
+      //contentPlainText : htmlPassageToText(passageFromApi.content),
       copyright: cleanCopyrightText(passageFromApi.copyright)
     }
     const body = {
