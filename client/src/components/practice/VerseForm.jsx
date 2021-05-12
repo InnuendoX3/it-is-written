@@ -38,7 +38,7 @@ export default function VerseForm(props) {
     <form className="little-spc">
       <textarea name="" id="" cols="70" rows="8" onChange={ e => handleOnChange(e)} value={userText} />
       <div>
-        <button onClick={handleCompare}>Compare</button>
+        <button onClick={handleCompare}>Let's check!</button>
       </div>
     </form>
   )

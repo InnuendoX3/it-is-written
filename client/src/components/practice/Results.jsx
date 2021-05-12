@@ -15,9 +15,6 @@ export default function Results(props) {
     setWrittingMode(false)
     setShowResults(false)
 
-    console.log('passage.contentPlainText', passage.contentPlainText)
-    console.log('userText', userText)
-
   }
   
   return (

@@ -34,7 +34,6 @@ export default function SelectPassage () {
 
 
   useEffect(() => {
-    console.log('Select useEffect activated (by content or setUserText?)')
     async function getBibles() {
       axios('/api/bibles')
         .then( res => setContent({...content, bibles: res.data}))
@@ -62,8 +61,6 @@ export default function SelectPassage () {
 
   return (
     <div className="App">
-
-      <h1>Hello Father!!!</h1>
 
       { bibles && <BibleList {...propsList} /> }
 
