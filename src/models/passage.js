@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const passageSquema = new mongoose.Schema({
-  passage: String,
+  content: String,
   reference: String,
   bible: String
 })

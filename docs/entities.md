@@ -38,20 +38,22 @@
 ### A single Verse
 ```json
 {
-  "id": "PSA.119.15",
-  "reference": "Salmos 119:15",
-  "content": "<p class=\"q\"><span data-number=\"15\" data-sid=\"PSA 119:15\" class=\"v\">15</span>En tus mandamientos meditaré,</p><p data-vid=\"PSA 119:15\" class=\"q\">Consideraré tus caminos.</p>",
-  "copyright": "\n          Reina-Valera 1909 - Dominio público.\n          Fue realizada por Sociedades Bíblicas Unidas y publicada por primera vez en 1909.\n        "
+  "id": "JHN.14.15",
+  "reference": "John 14:15",
+  "content": "If you love me, you will keep my commands.",
+  "copyright": "Dr. Jonathan Gallagher. Released under Creative Commons Attribution-ShareAlike 4.0 Unported License. Version 3.1 beta. For corrections send email to jonathangallagherfbv@gmail.com",
+  "bible": "Free Bible Version"
 }
 ```
 
 ### A Passage
 ```json
 {
-  "id": "LUK.11.15-LUK.11.18",
-  "reference": "Luke 11:15-18",
-  "content": "But some of them said, “He is driving out demons using the power of Beelzebub, the ruler of demons.” Others were trying to test Jesus by demanding a miraculous sign from heaven. Jesus knew what they were thinking and said, “Any kingdom divided against itself will collapse. A family divided against itself will fall. If Satan is divided against himself, how can his kingdom stand? You say that I cast out demons using the power of Beelzebub.",
-  "copyright": "Dr. Jonathan Gallagher. Released under Creative Commons Attribution-ShareAlike 4.0 Unported License. Version 3.1 beta. For corrections send email to jonathangallagherfbv@gmail.com"
+  "id": "PSA.60.2-PSA.60.4",
+  "reference": "Salmos 60:2-4",
+  "content": "Hiciste temblar la tierra, abrístela: Sana sus quiebras, porque titubea. Has hecho ver á tu pueblo duras cosas: Hicístenos beber el vino de agitación. en medio de muchos peligros. “En Dios está acallada mi alma.” Has dado á los que te temen banderaQue alcen por la verdad. (Selah.)",
+  "copyright": "Reina-Valera 1909 - Dominio público. Fue realizada por Sociedades Bíblicas Unidas y publicada por primera vez en 1909.",
+  "bible": "Reina Valera 1909"
 }
 ```
 

@@ -114,22 +114,20 @@ const getChapterVerses = async (req, res) => {
 const getVerse = async (req, res) => {
   ResponseHandler(res, async () => {
     const bibleAbbr = req.params.bibleAbbr
+    const bible = _findBibleByAbbreviature(bibleAbbr)
     const verseId = req.params.verseId
     const verseFromApi = await bibleAPI.getSingleVerse(bibleAbbr, verseId)
     const verse = {
       id: verseFromApi.id,
       reference: verseFromApi.reference,
       content: htmlPassageToText(verseFromApi.content),
-      copyright: cleanCopyrightText(verseFromApi.copyright)
-    }
-    const body = {
-      bible: _findBibleByAbbreviature(bibleAbbr),
-      verse: verse
+      copyright: cleanCopyrightText(verseFromApi.copyright),
+      bible: bible.name
     }
 
     const response = {
       status: 200,
-      body
+      body: verse
     }
 
     return response
@@ -139,22 +137,20 @@ const getVerse = async (req, res) => {
 const getPassage = (req, res) => {
   ResponseHandler(res, async () => {
     const bibleAbbr = req.params.bibleAbbr
+    const bible = _findBibleByAbbreviature(bibleAbbr)
     const passageRange = req.params.passageRange
     const passageFromApi = await bibleAPI.getPassage(bibleAbbr, passageRange)
     const passage = {
       id: passageFromApi.id,
       reference: passageFromApi.reference,
       content: htmlPassageToText(passageFromApi.content),
-      copyright: cleanCopyrightText(passageFromApi.copyright)
-    }
-    const body = {
-      bible: _findBibleByAbbreviature(bibleAbbr),
-      passage: passage
+      copyright: cleanCopyrightText(passageFromApi.copyright),
+      bible: bible.name
     }
 
     const response = {
       status: 200,
-      body
+      body: passage
     }
 
     return response

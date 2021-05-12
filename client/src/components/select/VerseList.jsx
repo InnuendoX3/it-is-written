@@ -56,7 +56,7 @@ export default function VerseList(props) {
     
     axios(url)
       .then( res => {
-        setPassage(res.data.passage)
+        setPassage(res.data)
         setHasSelectedLastVerse(true)
       })
       .catch( error => console.log(error))
