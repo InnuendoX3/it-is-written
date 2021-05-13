@@ -49,7 +49,7 @@
 ### A Passage
 ```json
 {
-  "id": "PSA.60.2-PSA.60.4",
+  "verseRange": "PSA.60.2-PSA.60.4", // Not used on client
   "reference": "Salmos 60:2-4",
   "content": "Hiciste temblar la tierra, abrístela: Sana sus quiebras, porque titubea. Has hecho ver á tu pueblo duras cosas: Hicístenos beber el vino de agitación. en medio de muchos peligros. “En Dios está acallada mi alma.” Has dado á los que te temen banderaQue alcen por la verdad. (Selah.)",
   "copyright": "Reina-Valera 1909 - Dominio público. Fue realizada por Sociedades Bíblicas Unidas y publicada por primera vez en 1909.",
