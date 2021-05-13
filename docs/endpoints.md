@@ -126,7 +126,7 @@ Passage is the text between two verses.
 > Output
 ```json
 {
-  "id": "LUK.11.15-LUK.11.18",
+  "id": "LUK.11.15-LUK.11.18", // TODO: Change name to verseRange ?
   "reference": "Luke 11:15-18",
   "content": "But some of them said, “He is driving out demons using the power of Beelzebub, the ruler of demons.” Others were trying to test Jesus by demanding a miraculous sign from heaven. Jesus knew what they were thinking and said, “Any kingdom divided against itself will collapse. A family divided against itself will fall. If Satan is divided against himself, how can his kingdom stand? You say that I cast out demons using the power of Beelzebub.",
   "copyright": "Dr. Jonathan Gallagher. Released under Creative Commons Attribution-ShareAlike 4.0 Unported License. Version 3.1 beta. For corrections send email to jonathangallagherfbv@gmail.com",
@@ -179,5 +179,79 @@ Return the results of comparing the Bible text with the written by the user
   "percentage": 87,
   "bibleTextWordsQty": 15,
   "matchedWords": 13
+}
+```
+
+### Favourite passages
+Are passages got from API Bible that the user choose to save as favourite
+
+#### GET /api/passages/
+ONLY REGISTERED USERS: Return a list with favourite passages saved by user
+> Headers - userId ?
+> Output
+```json
+[
+  {
+    "reference": "Luke 11:15-18",
+    "content": "But some of them said, “He is driving out demons using the power of Beelzebub, the ruler of demons.” Others were trying to test Jesus by demanding a miraculous sign from heaven. Jesus knew what they were thinking and said, “Any kingdom divided against itself will collapse. A family divided against itself will fall. If Satan is divided against himself, how can his kingdom stand? You say that I cast out demons using the power of Beelzebub.",
+    "copyright": "Dr. Jonathan Gallagher. Released under Creative Commons Attribution-ShareAlike 4.0 Unported License. Version 3.1 beta. For corrections send email to jonathangallagherfbv@gmail.com",
+    "bible": "Free Bible Version"
+  },
+  ...
+]
+
+```
+#### POST /api/passages/ 
+ONLY REGISTERED USERS: Save a favourite passage
+> Body
+```json
+{
+  "reference": "Luke 11:15-18",
+  "content": "But some of them said, “He is driving out demons using the power of Beelzebub, the ruler of demons.” Others were trying to test Jesus by demanding a miraculous sign from heaven. Jesus knew what they were thinking and said, “Any kingdom divided against itself will collapse. A family divided against itself will fall. If Satan is divided against himself, how can his kingdom stand? You say that I cast out demons using the power of Beelzebub.",
+  "copyright": "Dr. Jonathan Gallagher. Released under Creative Commons Attribution-ShareAlike 4.0 Unported License. Version 3.1 beta. For corrections send email to jonathangallagherfbv@gmail.com",
+  "bible": "Free Bible Version"
+}
+```
+> Output
+```json
+{
+  "message": "Passage added as favourite"
+}
+```
+#### DELETE /api/passages/:id 
+ONLY REGISTERED USERS: Delete a favourite passage
+> Output
+```json
+{
+    "message": "Passage deleted as favourite"
+}
+```
+
+### Random passages
+XXXXXXXXXXXXX
+
+#### GET /api/passages/random
+Return a random passage saved by admin - english or spanish
+> Body
+```json
+{
+}
+```
+> Output
+```json
+{
+}
+```
+
+#### POST /api/passages/ random
+Return the results of comparing the Bible text with the written by the user
+> Body
+```json
+{
+}
+```
+> Output
+```json
+{
 }
 ```

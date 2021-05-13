@@ -1,6 +1,6 @@
 const bibleAPI = require('../resources/bibleAPI/bibleAPI')
 
-const { ResponseHandler } = require('./ResponseHandler')
+const { responseHandler } = require('./responseHandler')
 const { cleanCopyrightText, htmlPassageToText } = require('../resources/textFormat')
 
 const { BIBLES } = require('../resources/bibleAPI/constants')
@@ -25,7 +25,7 @@ const _getVerseNr = verseId => {
 //// PUBLIC
 
 const getBibles = (req, res) => {
-  ResponseHandler(res, () => {
+  responseHandler(res, () => {
     const bibles = bibleAPI.getBibles().map( bible => {
       return {
         abbreviation: bible.abbreviation,
@@ -44,7 +44,7 @@ const getBibles = (req, res) => {
 }
 
 const getBooks = async (req, res) => {
-  ResponseHandler(res, async () => {
+  responseHandler(res, async () => {
     const bibleAbbr = req.params.bibleAbbr
     const booksFromApi = await bibleAPI.getBibleBooks(bibleAbbr)
     const books = booksFromApi.map( book => ({ id: book.id, name: book.name }))
@@ -63,7 +63,7 @@ const getBooks = async (req, res) => {
 }
 
 const getChapters = async (req, res) => {
-  ResponseHandler(res, async () => {
+  responseHandler(res, async () => {
     const bibleAbbr = req.params.bibleAbbr
     const bookId = req.params.bookId
     const chaptersFromApi = await bibleAPI.getBookChapters(bibleAbbr, bookId)
@@ -88,7 +88,7 @@ const getChapters = async (req, res) => {
 }
 
 const getChapterVerses = async (req, res) => {
-  ResponseHandler(res, async () => {
+  responseHandler(res, async () => {
     const bibleAbbr = req.params.bibleAbbr
     const chapterId = req.params.chapterId
     const versesFromApi = await bibleAPI.getChapterVerses(bibleAbbr, chapterId)
@@ -112,7 +112,7 @@ const getChapterVerses = async (req, res) => {
 }
 
 const getVerse = async (req, res) => {
-  ResponseHandler(res, async () => {
+  responseHandler(res, async () => {
     const bibleAbbr = req.params.bibleAbbr
     const bible = _findBibleByAbbreviature(bibleAbbr)
     const verseId = req.params.verseId
@@ -135,7 +135,7 @@ const getVerse = async (req, res) => {
 }
 
 const getPassage = (req, res) => {
-  ResponseHandler(res, async () => {
+  responseHandler(res, async () => {
     const bibleAbbr = req.params.bibleAbbr
     const bible = _findBibleByAbbreviature(bibleAbbr)
     const passageRange = req.params.passageRange

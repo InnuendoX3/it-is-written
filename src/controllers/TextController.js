@@ -1,9 +1,9 @@
-const { ResponseHandler } = require('./ResponseHandler')
+const { responseHandler } = require('./responseHandler')
 
 const diffTexts = require('../resources/diffTexts')
 
 const compareTexts = (req, res) => {
-  ResponseHandler(res, () => {
+  responseHandler(res, () => {
     const bibleText = req.body.bibleText
     const userText = req.body.userText
 

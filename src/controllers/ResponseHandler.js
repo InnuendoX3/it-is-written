@@ -1,9 +1,9 @@
-const ErrorResponse = (status, message) => ({
+const errorResponse = (status, message) => ({
   status,
   message
 })
 
-const ResponseHandler = async (res, action) => {
+const responseHandler = async (res, action) => {
   try {
     const response = await action()
     const status = response.status || 200
@@ -24,6 +24,6 @@ const ResponseHandler = async (res, action) => {
 }
 
 module.exports = {
-  ErrorResponse,
-  ResponseHandler
+  errorResponse,
+  responseHandler
 }

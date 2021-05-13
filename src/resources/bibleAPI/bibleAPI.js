@@ -1,7 +1,7 @@
 const axios = require('axios').default
 
 const { BASE_URL, BIBLES } = require('./constants')
-const { ErrorResponse } = require('../../controllers/ResponseHandler')
+const { errorResponse } = require('../../controllers/responseHandler')
 
 const bibleAPI = () => {
 
@@ -19,13 +19,13 @@ const bibleAPI = () => {
     .catch( error => {
       const errorStatus = error.response.data.statusCode
       const errorMessage = error.response.data.message
-      throw ErrorResponse( errorStatus, `Error from Bible API: ${errorMessage}`)
+      throw errorResponse( errorStatus, `Error from Bible API: ${errorMessage}`)
     })
   }
 
   const _getBibleID = bibleAbbr => {
     const bible = BIBLES.find( ({ abbreviation }) => abbreviation === bibleAbbr)
-    if(!bible) throw ErrorResponse(400, 'Bible abbreviation not found on Bible list')
+    if(!bible) throw errorResponse(400, 'Bible abbreviation not found on Bible list')
     return bible.id
   }
 
