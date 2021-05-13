@@ -12,7 +12,7 @@ const passageSquema = new mongoose.Schema({
 const Passage = mongoose.model('Passage', passageSquema)
 
 const savePassage = async passage => {
-  const doc = await Passage.create({
+  return await Passage.create({
     content: passage.content,
     reference: passage.reference,
     bible: passage.bible,
@@ -20,8 +20,11 @@ const savePassage = async passage => {
     user: passage.user ? passage.user : '',
     isRandom: passage.random ? passage.random : false
   })
-
-  return doc
+  .then( data => data )
+  .catch( error => {
+    console.log(error)
+    throw new Error(error)
+  })
 }
 
 module.exports = {
