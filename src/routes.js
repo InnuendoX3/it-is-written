@@ -22,7 +22,8 @@ routes.delete('/passages/:id', passageController.unsetFavouritePassage)
 routes.post('/texts/compare', textController.compareTexts)
 
 // Users
-routes.post('/users', userController.signup)
+routes.post('/register', userController.register)
+routes.post('/login', userController.login)
 
 routes.all('*', (_, res) => res.status(404).send('Page Not Found'))
 
