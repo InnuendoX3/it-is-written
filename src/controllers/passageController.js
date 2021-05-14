@@ -1,5 +1,5 @@
 const passageModel = require ('../models/passageModel')
-const { responseHandler } = require('./responseHandler')
+const { responseHandler, errorResponse } = require('./responseHandler')
 
 const savePassage = async (req, res) => {
   responseHandler(res, async() => {
@@ -21,9 +21,6 @@ const savePassage = async (req, res) => {
 const getPassages = async (req, res) => {
   responseHandler(res, async () => {
     const passages = await passageModel.getPassages() // Add later userID to find
-    const body = {
-      passages
-    }
     const response = {
       status: 200,
       body: passages
@@ -33,7 +30,26 @@ const getPassages = async (req, res) => {
   })
 }
 
+const unfavouritePassage = async (req, res) =>{
+  responseHandler(res, async () => {
+    const passageId = req.params.id  
+    const deleteResponse = await passageModel.deletePassage(passageId)
+
+    if (!deleteResponse.deletedCount) throw errorResponse(400, 'Passage not found') 
+
+    const body = { message: 'Passage is no longer a favourite' }
+
+    const response = {
+      status: 201,
+      body
+    }
+
+    return response
+  })
+}
+
 module.exports = {
   savePassage,
-  getPassages
+  getPassages,
+  unfavouritePassage
 }

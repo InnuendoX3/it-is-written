@@ -232,7 +232,7 @@ ONLY REGISTERED USERS: Delete a favourite passage
 > Output
 ```json
 {
-    "message": "Passage deleted as favourite"
+    "message": "Passage is no longer a favourite"
 }
 ```
 

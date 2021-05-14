@@ -36,7 +36,18 @@ const getPassages = async () => {
     })
 }
 
+const deletePassage = async (passageId) => {
+  const query = {_id: passageId}
+  return await Passage.deleteOne(query)
+    .then( data => data)
+    .catch( error => {
+      console.log(error)
+      throw new Error(error)
+    })
+}
+
 module.exports = {
   savePassage,
   getPassages,
+  deletePassage
 }
