@@ -1,7 +1,7 @@
 const passageModel = require ('../models/passageModel')
 const { responseHandler, errorResponse } = require('./responseHandler')
 
-const savePassage = async (req, res) => {
+const setFavouritePassage = async (req, res) => {
   responseHandler(res, async() => {
     const passage = req.body
     const passageSaved = await passageModel.savePassage(passage)
@@ -18,7 +18,7 @@ const savePassage = async (req, res) => {
   })
 }
 
-const getPassages = async (req, res) => {
+const getFavouritePassages = async (req, res) => {
   responseHandler(res, async () => {
     const passages = await passageModel.getPassages() // Add later userID to find
     const response = {
@@ -30,7 +30,7 @@ const getPassages = async (req, res) => {
   })
 }
 
-const unfavouritePassage = async (req, res) =>{
+const unsetFavouritePassage = async (req, res) =>{
   responseHandler(res, async () => {
     const passageId = req.params.id  
     const deleteResponse = await passageModel.deletePassage(passageId)
@@ -49,7 +49,7 @@ const unfavouritePassage = async (req, res) =>{
 }
 
 module.exports = {
-  savePassage,
-  getPassages,
-  unfavouritePassage
+  setFavouritePassage,
+  getFavouritePassages,
+  unsetFavouritePassage
 }

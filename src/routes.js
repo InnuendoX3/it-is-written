@@ -13,9 +13,9 @@ routes.get('/bibles/:bibleAbbr/verses/:verseId', externAPIController.getVerse)
 routes.get('/bibles/:bibleAbbr/passages/:passageRange', externAPIController.getPassage)
 
 // Favourites passages
-routes.get('/passages', passageController.getPassages)
-routes.post('/passages', passageController.savePassage)
-routes.delete('/passages/:id', passageController.unfavouritePassage)
+routes.get('/passages', passageController.getFavouritePassages)
+routes.post('/passages', passageController.setFavouritePassage)
+routes.delete('/passages/:id', passageController.unsetFavouritePassage)
 
 // Compare texts - Diff
 routes.post('/texts/compare', textController.compareTexts)
