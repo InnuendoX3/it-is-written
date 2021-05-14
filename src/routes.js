@@ -13,7 +13,7 @@ routes.get('/bibles/:bibleAbbr/verses/:verseId', externAPIController.getVerse)
 routes.get('/bibles/:bibleAbbr/passages/:passageRange', externAPIController.getPassage)
 
 // Favourites passages
-routes.get('/passages')
+routes.get('/passages', passageController.getPassages)
 routes.post('/passages', passageController.savePassage)
 routes.delete('/passages/:id')
 

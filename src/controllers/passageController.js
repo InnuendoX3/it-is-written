@@ -4,10 +4,10 @@ const { responseHandler } = require('./responseHandler')
 const savePassage = async (req, res) => {
   responseHandler(res, async() => {
     const passage = req.body
-    const doc = await passageModel.savePassage(passage)
+    const passageSaved = await passageModel.savePassage(passage)
     const body = {
       message: 'Passage added as favourite',
-      body: doc
+      body: passageSaved
     }
     const response = {
       status: 201,
@@ -16,23 +16,24 @@ const savePassage = async (req, res) => {
 
     return response
   })
-  
+}
 
+const getPassages = async (req, res) => {
+  responseHandler(res, async () => {
+    const passages = await passageModel.getPassages() // Add later userID to find
+    const body = {
+      passages
+    }
+    const response = {
+      status: 200,
+      body: passages
+    }
 
-/*   await passageModel.savePassage(passage)
-    .then( doc => {
-      const response = {
-        message: 'Passage added as favourite',
-        body: doc
-      }      
-      res.status(201).json(response)
-    })
-    .catch(error => {
-      console.log(error)
-      res.status(400).send(error)
-    }) */
+    return response
+  })
 }
 
 module.exports = {
-  savePassage
+  savePassage,
+  getPassages
 }

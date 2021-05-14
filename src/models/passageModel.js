@@ -27,6 +27,16 @@ const savePassage = async passage => {
   })
 }
 
+const getPassages = async () => {
+  return await Passage.find()
+    .then( data => data)
+    .catch( error => {
+      console.log(error)
+      throw new Error(error)
+    })
+}
+
 module.exports = {
-  savePassage
+  savePassage,
+  getPassages,
 }

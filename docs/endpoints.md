@@ -134,6 +134,7 @@ Passage is the text between two verses.
 }
 ```
 
+### Compare - Diff
 #### POST /api/texts/compare
 Return the results of comparing the Bible text with the written by the user
 > Body
@@ -194,7 +195,6 @@ ONLY REGISTERED USERS: Return a list with favourite passages saved by user
   {
     "reference": "Luke 11:15-18",
     "content": "But some of them said, “He is driving out demons using the power of Beelzebub, the ruler of demons.” Others were trying to test Jesus by demanding a miraculous sign from heaven. Jesus knew what they were thinking and said, “Any kingdom divided against itself will collapse. A family divided against itself will fall. If Satan is divided against himself, how can his kingdom stand? You say that I cast out demons using the power of Beelzebub.",
-    "copyright": "Dr. Jonathan Gallagher. Released under Creative Commons Attribution-ShareAlike 4.0 Unported License. Version 3.1 beta. For corrections send email to jonathangallagherfbv@gmail.com",
     "bible": "Free Bible Version"
   },
   ...
@@ -206,16 +206,25 @@ ONLY REGISTERED USERS: Save a favourite passage
 > Body
 ```json
 {
-  "reference": "Luke 11:15-18",
-  "content": "But some of them said, “He is driving out demons using the power of Beelzebub, the ruler of demons.” Others were trying to test Jesus by demanding a miraculous sign from heaven. Jesus knew what they were thinking and said, “Any kingdom divided against itself will collapse. A family divided against itself will fall. If Satan is divided against himself, how can his kingdom stand? You say that I cast out demons using the power of Beelzebub.",
-  "copyright": "Dr. Jonathan Gallagher. Released under Creative Commons Attribution-ShareAlike 4.0 Unported License. Version 3.1 beta. For corrections send email to jonathangallagherfbv@gmail.com",
+  "reference": "John 4:15-17",
+  "content": "“Sir,” replied the woman, “Please give me this water so I won't be thirsty, and I won't have to come here to fetch water!” “Go and call your husband, and come back here,” Jesus told her. “I don't have a husband,” the woman answered.“You're right in saying you don't have a husband,” Jesus told her.",
   "bible": "Free Bible Version"
 }
 ```
 > Output
 ```json
 {
-  "message": "Passage added as favourite"
+  "message": "Passage added as favourite",
+  "body": {
+    "isRandom": false,
+    "_id": "609e2bc9d1b9c66ce48fdd92",
+    "content": "“Sir,” replied the woman, “Please give me this water so I won't be thirsty, and I won't have to come here to fetch water!” “Go and call your husband, and come back here,” Jesus told her. “I don't have a husband,” the woman answered.“You're right in saying you don't have a husband,” Jesus told her.",
+    "reference": "John 4:15-17",
+    "bible": "Free Bible Version",
+    "language": "",
+    "user": "",
+    "__v": 0
+  }
 }
 ```
 #### DELETE /api/passages/:id 
