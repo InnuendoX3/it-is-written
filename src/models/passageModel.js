@@ -18,7 +18,7 @@ const savePassage = async passage => {
     bible: passage.bible,
     language: passage.language ? passage.language : '',
     user: passage.user ? passage.user : '',
-    isRandom: passage.random ? passage.random : false
+    isRandom: passage.isRandom ? passage.isRandom : false
   })
   .then( data => data )
   .catch( error => {

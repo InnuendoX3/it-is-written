@@ -49,11 +49,14 @@
 ### A Passage
 ```json
 {
-  "verseRange": "PSA.60.2-PSA.60.4", // Not used on client
-  "reference": "Salmos 60:2-4",
-  "content": "Hiciste temblar la tierra, abrístela: Sana sus quiebras, porque titubea. Has hecho ver á tu pueblo duras cosas: Hicístenos beber el vino de agitación. en medio de muchos peligros. “En Dios está acallada mi alma.” Has dado á los que te temen banderaQue alcen por la verdad. (Selah.)",
-  "copyright": "Reina-Valera 1909 - Dominio público. Fue realizada por Sociedades Bíblicas Unidas y publicada por primera vez en 1909.",
-  "bible": "Reina Valera 1909"
+  "isRandom": true,
+  "_id": "60a0dca618096e5bc8f2229f",
+  "content": "“How can you be reborn when you're old?” Nicodemus asked. “You can't go back into your mother's womb and be born a second time!” “I tell you the truth, you can't enter God's kingdom unless you are born of water and the Spirit,” Jesus told him.",
+  "reference": "John 3:4-5",
+  "bible": "Free Bible Version",
+  "language": "",
+  "user": "",
+  "__v": 0
 }
 ```
 

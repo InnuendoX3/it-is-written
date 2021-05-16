@@ -48,8 +48,32 @@ const unsetFavouritePassage = async (req, res) =>{
   })
 }
 
+
+//// Random Pasages ////
+
+const createRandomPassages = async (req, res) => {
+  responseHandler(res, async() => {
+    const passage = {
+      ...req.body,
+      isRandom: true
+    }
+    const passageSaved = await passageModel.savePassage(passage)
+    const body = {
+      message: 'Random passage created',
+      body: passageSaved
+    }
+    const response = {
+      status: 201,
+      body
+    }
+
+    return response
+  })
+}
+
 module.exports = {
   setFavouritePassage,
   getFavouritePassages,
-  unsetFavouritePassage
+  unsetFavouritePassage,
+  createRandomPassages
 }

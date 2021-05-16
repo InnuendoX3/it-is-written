@@ -244,11 +244,25 @@ Return a random passage saved by admin - english or spanish
 > Body
 ```json
 {
+  "reference": "John 3:4-5",
+  "content": "“How can you be reborn when you're old?” Nicodemus asked. “You can't go back into your mother's womb and be born a second time!” “I tell you the truth, you can't enter God's kingdom unless you are born of water and the Spirit,” Jesus told him.",
+  "bible": "Free Bible Version"
 }
 ```
 > Output
 ```json
 {
+  "message": "Random passage created",
+  "body": {
+    "isRandom": true,
+    "_id": "60a0dca618096e5bc8f2229f",
+    "content": "“How can you be reborn when you're old?” Nicodemus asked. “You can't go back into your mother's womb and be born a second time!” “I tell you the truth, you can't enter God's kingdom unless you are born of water and the Spirit,” Jesus told him.",
+    "reference": "John 3:4-5",
+    "bible": "Free Bible Version",
+    "language": "",
+    "user": "",
+    "__v": 0
+  }
 }
 ```
 
