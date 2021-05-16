@@ -11,15 +11,6 @@ export default function BibleVerse(props) {
     writtingMode
   } = props.modes
 
-/*   // To inject the content from API that comes in HTML
-  // This is called dangerous HTML 
-  const verseInHTML = {
-    __html: passage.content
-    //__html: '<span>This is some test text to test. To avoid so many API calls. Try to repeat it.</span>'
-  } */
-  
-  
-
   function handleClick() {
     setReadingMode(!readingMode)
     setWrittingMode(!writtingMode)

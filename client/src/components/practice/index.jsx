@@ -1,14 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+
+import { BibleContext } from '../../contexts/BibleContext'
 
 import BibleVerse from './BibleVerse'
 import VerseForm from './VerseForm'
 import Results from './Results'
 
 export default function Practice() {
+  const { setUserText } = useContext(BibleContext)
+
   const [readingMode, setReadingMode] = useState(true)
   const [writtingMode, setWrittingMode] = useState(false)
   const [showResults, setShowResults] = useState(false)
 
+
+  useEffect(() => {
+    setUserText('') //Reset textarea from old userText
+  }, [])
 
   return (
     <div className='App'>

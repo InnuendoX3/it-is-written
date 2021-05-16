@@ -41,7 +41,6 @@ export default function SelectPassage () {
     }
 
     getBibles()
-    setUserText('') // Reset user text
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 
