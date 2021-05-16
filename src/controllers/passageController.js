@@ -1,5 +1,6 @@
 const passageModel = require ('../models/passageModel')
 const { responseHandler, errorResponse } = require('./responseHandler')
+const { LANGUAGES } = require('../constants')
 
 const addFavouritePassage = async (req, res) => {
   responseHandler(res, async() => {
@@ -88,10 +89,28 @@ const getAllRandomPassages = async (req, res) => {
   })
 }
 
+const getRandomPassage = async (req, res) => {
+  const langExists = LANGUAGES.find( ({id}) => id == req.query.language )
+  const language = langExists ? parseInt(req.query.language) : 1 // Default English
+
+  responseHandler(res, async () => {
+    const passage = await passageModel.getRandomPassage(language)
+    console.log('passage', passage)
+    const response = {
+      status: 200,
+      body: passage
+    }
+    console.log('response', response)
+
+    return response
+  })
+}
+
 module.exports = {
   addFavouritePassage,
   getFavouritePassages,
   deletePassage,
   createRandomPassages,
-  getAllRandomPassages
+  getAllRandomPassages,
+  getRandomPassage
 }

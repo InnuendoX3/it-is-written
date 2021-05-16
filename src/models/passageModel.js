@@ -48,8 +48,24 @@ const deletePassage = async (passageId) => {
     })
 }
 
+const getRandomPassage = async (language) => {
+  const query = { isRandom: true, language: language }
+  const count = await Passage.countDocuments(query)
+  const randomNumber = Math.floor(Math.random() * count)
+  return await Passage.findOne(query).skip(randomNumber)
+    .then( data => {
+      console.log('data', data)
+      return data
+    })
+    .catch( error => {
+      console.log(error)
+      throw new Error(error)
+    })
+}
+
 module.exports = {
   savePassage,
   getPassages,
-  deletePassage
+  deletePassage,
+  getRandomPassage
 }

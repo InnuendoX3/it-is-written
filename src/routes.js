@@ -18,8 +18,9 @@ routes.get('/passages', passageController.getFavouritePassages)
 routes.post('/passages', passageController.addFavouritePassage)
 routes.delete('/passages/:id', passageController.deletePassage)
 // Random passages
-routes.get('/passages/random', passageController.getAllRandomPassages)
+routes.get('/passages/random', passageController.getRandomPassage)
 routes.post('/passages/random', passageController.createRandomPassages)
+routes.get('/passages/random/all', passageController.getAllRandomPassages)
 
 
 // Compare texts - Diff
