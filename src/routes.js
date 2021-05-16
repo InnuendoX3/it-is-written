@@ -18,7 +18,7 @@ routes.get('/passages', passageController.getFavouritePassages)
 routes.post('/passages', passageController.setFavouritePassage)
 routes.delete('/passages/:id', passageController.unsetFavouritePassage)
 // Random passages
-//routes.get('/passages/random', passageController.getRandomPassages)
+routes.get('/passages/random', passageController.getAllRandomPassages)
 routes.post('/passages/random', passageController.createRandomPassages)
 //routes.delete('/passages/random/:id', passageController.deleteRandomPassages)
 

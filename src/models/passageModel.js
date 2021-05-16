@@ -6,6 +6,7 @@ const passageSquema = new mongoose.Schema({
   bible:      { type: String, required: true },
   language:   Number,  // 1=English, 2=Spanish
   user:       String,
+  isFavourite:   { type: Boolean, default: false },
   isRandom:   { type: Boolean, default: false }
 })
 
@@ -13,12 +14,13 @@ const Passage = mongoose.model('Passage', passageSquema)
 
 const savePassage = async passage => {
   return await Passage.create({
-    content: passage.content,
-    reference: passage.reference,
-    bible: passage.bible,
-    language: passage.language ? passage.language : '',
-    user: passage.user ? passage.user : '',
-    isRandom: passage.isRandom ? passage.isRandom : false
+    content:      passage.content,
+    reference:    passage.reference,
+    bible:        passage.bible,
+    language:     passage.language ? passage.language : '',
+    user:         passage.user ? passage.user : '',
+    isFavourite:  passage.isFavourite ? passage.isFavourite : false,
+    isRandom:     passage.isRandom ? passage.isRandom : false
   })
   .then( data => data )
   .catch( error => {
@@ -27,8 +29,8 @@ const savePassage = async passage => {
   })
 }
 
-const getPassages = async () => {
-  return await Passage.find()
+const getPassages = async (query) => {
+  return await Passage.find(query)
     .then( data => data)
     .catch( error => {
       console.log(error)

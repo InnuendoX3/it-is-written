@@ -3,7 +3,10 @@ const { responseHandler, errorResponse } = require('./responseHandler')
 
 const setFavouritePassage = async (req, res) => {
   responseHandler(res, async() => {
-    const passage = req.body
+    const passage = {
+      ...req.body,
+      isFavourite: true
+    }
     const passageSaved = await passageModel.savePassage(passage)
     const body = {
       message: 'Passage added as favourite',
@@ -20,7 +23,8 @@ const setFavouritePassage = async (req, res) => {
 
 const getFavouritePassages = async (req, res) => {
   responseHandler(res, async () => {
-    const passages = await passageModel.getPassages() // Add later userID to find
+    const query = { isFavourite: true }
+    const passages = await passageModel.getPassages(query) // Add later userID to find
     const response = {
       status: 200,
       body: passages
@@ -71,9 +75,23 @@ const createRandomPassages = async (req, res) => {
   })
 }
 
+const getAllRandomPassages = async (req, res) => {
+  responseHandler(res, async () => {
+    const query = { isRandom: true }
+    const passages = await passageModel.getPassages(query)
+    const response = {
+      status: 200,
+      body: passages
+    }
+
+    return response
+  })
+}
+
 module.exports = {
   setFavouritePassage,
   getFavouritePassages,
   unsetFavouritePassage,
-  createRandomPassages
+  createRandomPassages,
+  getAllRandomPassages
 }
