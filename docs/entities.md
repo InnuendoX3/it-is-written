@@ -54,7 +54,7 @@
   "content": "“How can you be reborn when you're old?” Nicodemus asked. “You can't go back into your mother's womb and be born a second time!” “I tell you the truth, you can't enter God's kingdom unless you are born of water and the Spirit,” Jesus told him.",
   "reference": "John 3:4-5",
   "bible": "Free Bible Version",
-  "language": "",
+  "language": 1, // 1=English, 2=Spanish
   "user": "",
   "__v": 0
 }

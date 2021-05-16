@@ -4,7 +4,7 @@ const passageSquema = new mongoose.Schema({
   content:    { type: String, required: true },
   reference:  { type: String, required: true },
   bible:      { type: String, required: true },
-  language:   String,
+  language:   Number,  // 1=English, 2=Spanish
   user:       String,
   isRandom:   { type: Boolean, default: false }
 })

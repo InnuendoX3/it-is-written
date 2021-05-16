@@ -237,10 +237,23 @@ ONLY REGISTERED USERS: Delete a favourite passage
 ```
 
 ### Random passages
-XXXXXXXXXXXXX
+Passages saved by admin, 'language' key should be fylled.
 
 #### GET /api/passages/random
 Return a random passage saved by admin - english or spanish
+> Body
+```json
+{
+}
+```
+> Output
+```json
+{
+}
+```
+
+#### POST /api/passages/random - OK
+Return the results of comparing the Bible text with the written by the user
 > Body
 ```json
 {
@@ -259,22 +272,9 @@ Return a random passage saved by admin - english or spanish
     "content": "“How can you be reborn when you're old?” Nicodemus asked. “You can't go back into your mother's womb and be born a second time!” “I tell you the truth, you can't enter God's kingdom unless you are born of water and the Spirit,” Jesus told him.",
     "reference": "John 3:4-5",
     "bible": "Free Bible Version",
-    "language": "",
+    "language": 1, // 1=English, 2=Spanish
     "user": "",
     "__v": 0
   }
-}
-```
-
-#### POST /api/passages/ random
-Return the results of comparing the Bible text with the written by the user
-> Body
-```json
-{
-}
-```
-> Output
-```json
-{
 }
 ```
