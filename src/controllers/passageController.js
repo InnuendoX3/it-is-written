@@ -95,12 +95,10 @@ const getRandomPassage = async (req, res) => {
 
   responseHandler(res, async () => {
     const passage = await passageModel.getRandomPassage(language)
-    console.log('passage', passage)
     const response = {
       status: 200,
       body: passage
     }
-    console.log('response', response)
 
     return response
   })

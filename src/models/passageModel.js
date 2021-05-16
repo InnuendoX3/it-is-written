@@ -53,10 +53,7 @@ const getRandomPassage = async (language) => {
   const count = await Passage.countDocuments(query)
   const randomNumber = Math.floor(Math.random() * count)
   return await Passage.findOne(query).skip(randomNumber)
-    .then( data => {
-      console.log('data', data)
-      return data
-    })
+    .then( data => data)
     .catch( error => {
       console.log(error)
       throw new Error(error)

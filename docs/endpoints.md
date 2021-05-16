@@ -239,16 +239,20 @@ ONLY REGISTERED USERS: Delete a favourite passage
 ### Random passages
 Passages saved by admin, 'language' key should be fylled.
 
-#### GET /api/passages/random
+#### GET /api/passages/random/?language=1
 Return a random passage saved by admin - english or spanish
-> Body
-```json
-{
-}
-```
 > Output
 ```json
 {
+  "isFavourite": false,
+  "isRandom": true,
+  "_id": "60a0f4667c6570150000c9f4",
+  "content": "Esto es random 3",
+  "reference": "El libro de los random",
+  "bible": "El libro español",
+  "language": 2,
+  "user": "",
+  "__v": 0
 }
 ```
 
