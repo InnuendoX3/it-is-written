@@ -1,7 +1,7 @@
 const passageModel = require ('../models/passageModel')
 const { responseHandler, errorResponse } = require('./responseHandler')
 
-const setFavouritePassage = async (req, res) => {
+const addFavouritePassage = async (req, res) => {
   responseHandler(res, async() => {
     const passage = {
       ...req.body,
@@ -9,7 +9,7 @@ const setFavouritePassage = async (req, res) => {
     }
     const passageSaved = await passageModel.savePassage(passage)
     const body = {
-      message: 'Passage added as favourite',
+      message: 'Passage saved as favourite',
       body: passageSaved
     }
     const response = {
@@ -34,14 +34,14 @@ const getFavouritePassages = async (req, res) => {
   })
 }
 
-const unsetFavouritePassage = async (req, res) =>{
+const deletePassage = async (req, res) =>{
   responseHandler(res, async () => {
     const passageId = req.params.id  
     const deleteResponse = await passageModel.deletePassage(passageId)
 
     if (!deleteResponse.deletedCount) throw errorResponse(400, 'Passage not found') 
 
-    const body = { message: 'Passage is no longer a favourite' }
+    const body = { message: 'Passage deleted' }
 
     const response = {
       status: 201,
@@ -89,9 +89,9 @@ const getAllRandomPassages = async (req, res) => {
 }
 
 module.exports = {
-  setFavouritePassage,
+  addFavouritePassage,
   getFavouritePassages,
-  unsetFavouritePassage,
+  deletePassage,
   createRandomPassages,
   getAllRandomPassages
 }
