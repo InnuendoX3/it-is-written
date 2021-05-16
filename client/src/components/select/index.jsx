@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-import { BibleContext } from '../../contexts/BibleContext'
 import BibleList from './BibleList'
 import BookList from './BookList'
 import ChapterList from './ChapterList'
@@ -9,8 +8,6 @@ import VerseList from './VerseList'
 
 
 export default function SelectPassage () {
-  const { setUserText } = useContext(BibleContext)
-
   const [selection, setSelection] = useState(
     {
       bible: null,
@@ -44,18 +41,6 @@ export default function SelectPassage () {
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 
-
-/*   function ShowPassageInfo() {
-    const bibleInfo = bibleSelected ? bibleSelected.name : ''
-    const passageInfo = passage ? passage.reference : ''
-
-    return (
-      <p>
-        <span>{bibleInfo}</span> - <span>{passageInfo}</span>
-      </p>
-    )
-  } */
-
   const propsList = {content, setContent, selection, setSelection}
 
   return (
@@ -70,10 +55,6 @@ export default function SelectPassage () {
       { verses && <VerseList {...propsList} isInitialVerseList={true} /> }
 
       { selection.initialVerse && <VerseList {...propsList} isFinalVerseList={true} /> }
-
-      {/* <ShowPassageInfo /> */}
-
-      {/* passage && <Link to="/practice">Practice</Link> */}
 
     </div>
   )

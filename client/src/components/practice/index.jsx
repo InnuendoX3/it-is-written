@@ -16,7 +16,7 @@ export default function Practice() {
 
   useEffect(() => {
     setUserText('') //Reset textarea from old userText
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className='App'>

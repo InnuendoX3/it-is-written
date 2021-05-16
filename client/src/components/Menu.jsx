@@ -5,8 +5,8 @@ export default function Menu() {
   return (
     <menu>
       <NavLink to='/'>It Is Written</NavLink> - 
-      <NavLink to='/select'>Practice</NavLink> -
-      <NavLink to='/random'>Random</NavLink>
+      <NavLink to='/select'>Select Passage</NavLink> -
+      <NavLink to='/random'>Random Passage</NavLink>
     </menu>
   )
 }
