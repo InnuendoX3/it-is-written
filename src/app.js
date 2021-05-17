@@ -2,7 +2,7 @@ const express = require('express')
 
 const app = express()
 const routes = require('./routes')
-const dbConnect = require('./db')
+//const dbConnect = require('./db')
 
 //dbConnect()
 
