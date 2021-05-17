@@ -1,7 +1,7 @@
 const axios = require('axios').default
 
 const { BASE_URL, BIBLES } = require('./bibleConstants')
-const { errorResponse } = require('../../controllers/responseHandler2')
+const { errorResponse } = require('../../controllers/responseHandler')
 
 const bibleAPI = () => {
 

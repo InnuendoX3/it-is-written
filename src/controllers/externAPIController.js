@@ -1,6 +1,6 @@
 const bibleAPI = require('../resources/bibleAPI/bibleAPI')
 
-const { responseHandler } = require('./responseHandler2')
+const { responseHandler } = require('./responseHandler')
 const { cleanCopyrightText, htmlPassageToText } = require('../resources/textFormat')
 
 const { BIBLES } = require('../resources/bibleAPI/bibleConstants')

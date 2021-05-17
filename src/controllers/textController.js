@@ -1,4 +1,4 @@
-const { responseHandler } = require('./responseHandler2')
+const { responseHandler } = require('./responseHandler')
 
 const diffTexts = require('../resources/diffTexts')
 
