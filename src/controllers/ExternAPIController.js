@@ -3,7 +3,7 @@ const bibleAPI = require('../resources/bibleAPI/bibleAPI')
 const { responseHandler } = require('./responseHandler')
 const { cleanCopyrightText, htmlPassageToText } = require('../resources/textFormat')
 
-const { BIBLES } = require('../resources/bibleAPI/constants')
+const { BIBLES } = require('../resources/bibleAPI/bibleConstants')
 
 //// PRIVATE
 
