@@ -4,7 +4,7 @@ const app = express()
 const routes = require('./routes')
 const dbConnect = require('./db')
 
-dbConnect()
+//dbConnect()
 
 app.use(express.json())
 app.use('/api', routes)
