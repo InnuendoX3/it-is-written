@@ -23,8 +23,11 @@ const addFavouritePassage = async (req, res) => {
 }
 
 const getFavouritePassages = async (req, res) => {
+  const userId = req.user.userId
+  
   responseHandler(res, async () => {
-    const query = { isFavourite: true }
+    const query = { isFavourite: true, user: userId }
+    console.log('query', query)
     const passages = await passageModel.getPassages(query) // Add later userID to find
     const response = {
       status: 200,
