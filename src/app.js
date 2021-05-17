@@ -8,7 +8,8 @@ const routes = require('./routes')
 
 app.use(express.json())
 app.use('/api', routes)
-app.use('/saludo', (req, res) => {
+
+app.use('/debugging', (req, res) => {
   res.status(200).send({saludo: 'Hello!2'})
 })
 

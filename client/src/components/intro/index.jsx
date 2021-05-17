@@ -7,7 +7,7 @@ export default function Intro() {
   const [debugTitle, setDebugTitle] = useState(null)
   // Debugando
   useEffect(()=> {
-    axios('/saludo')
+    axios('/debugging')
     .then(res=>setDebugTitle(res.data.saludo))
   },[])
 

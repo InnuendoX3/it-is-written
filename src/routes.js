@@ -1,10 +1,10 @@
 const express = require('express')
 const routes = express.Router()
 
-const textController = require('./controllers/textController')
-const passageController = require('./controllers/passageController')
-const userController = require('../src/controllers/userController')
 const externAPIController = require('./controllers/externAPIController')
+const passageController = require('./controllers/passageController')
+const textController = require('./controllers/textController')
+const userController = require('./controllers/userController')
 
 routes.get('/bibles', externAPIController.getBibles)
 routes.get('/bibles/:bibleAbbr/books', externAPIController.getBooks)
