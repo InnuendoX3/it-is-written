@@ -1,5 +1,5 @@
 const passageModel = require ('../models/passageModel')
-const { responseHandler, errorResponse } = require('./responseHandler')
+const { responseHandler, errorResponse } = require('./responseHandler2')
 const { LANGUAGES } = require('../constants')
 
 const addFavouritePassage = async (req, res) => {

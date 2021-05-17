@@ -1,5 +1,5 @@
 const userModel = require('../models/userModel')
-const { responseHandler } = require("./responseHandler")
+const { responseHandler } = require("./responseHandler2")
 
 
 const register = async (req, res) => {
