@@ -17,7 +17,7 @@ routes.get('/bibles/:bibleAbbr/passages/:passageRange', externAPIController.getP
 
 // Favourites passages
 routes.get('/passages', auth.authenticate, passageController.getFavouritePassages)
-routes.post('/passages', passageController.addFavouritePassage)
+routes.post('/passages', auth.authenticate, passageController.addFavouritePassage)
 routes.delete('/passages/:id', passageController.deletePassage)
 // Random passages
 routes.get('/passages/random', passageController.getRandomPassage)
