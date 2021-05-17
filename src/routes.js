@@ -1,6 +1,8 @@
 const express = require('express')
 const routes = express.Router()
 
+const auth = require('./middlewares/auth')
+
 const externAPIController = require('./controllers/externAPIController')
 const passageController = require('./controllers/passageController')
 const textController = require('./controllers/textController')
@@ -14,7 +16,7 @@ routes.get('/bibles/:bibleAbbr/verses/:verseId', externAPIController.getVerse)
 routes.get('/bibles/:bibleAbbr/passages/:passageRange', externAPIController.getPassage)
 
 // Favourites passages
-routes.get('/passages', passageController.getFavouritePassages)
+routes.get('/passages', auth.authenticate, passageController.getFavouritePassages)
 routes.post('/passages', passageController.addFavouritePassage)
 routes.delete('/passages/:id', passageController.deletePassage)
 // Random passages

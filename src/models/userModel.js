@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+
 const { errorResponse } = require('../controllers/responseHandler')
 
 const userSquema = new mongoose.Schema({
@@ -40,15 +42,34 @@ const login = async (email, password) => {
   const passMatched = bcrypt.compareSync(password, userFound.password)
   if(!passMatched) throw errorResponse(400, 'Credentials not valid (p)')
 
-  // TODO: return JWT token with some info
+  const token = jwt.sign(
+    { userId: userFound._id, username: userFound.username },
+    process.env.JWT_SECRET,
+    { expiresIn: '3h'}
+  )
+
   const userLoggedInfo = {
+    tempID: userFound._id,  // TODO: delete, just testing
     username: userFound.username,
     email: userFound.email
   }
-  return userLoggedInfo
+
+  const response = {
+    token: token,
+    user: userLoggedInfo
+  }
+
+  return response
 }
+
+const verifyToken = token => {
+  const validToken = jwt.verify(token, process.env.JWT_SECRET)
+  return validToken
+}
+
 
 module.exports = {
   createUser,
-  login
+  login,
+  verifyToken
 }
