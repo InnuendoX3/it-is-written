@@ -30,6 +30,7 @@ routes.post('/login', userController.login)
 routes.get('/passages', auth.authenticate, passageController.getFavouritePassageList)
 routes.post('/passages', auth.authenticate, passageController.createFavouritePassage)
 routes.delete('/passages/:id', auth.authenticate, passageController.deleteFavouritePassage)
+routes.patch('/passages/:id', auth.authenticate, passageController.setPassageDiffResult)
 
 
 //// Admin routes ////

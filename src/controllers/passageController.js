@@ -52,9 +52,33 @@ const deleteFavouritePassage = async (req, res) =>{
     if (!deleteResponse.deletedCount) throw errorResponse(400, 'Passage not found') 
 
     const body = { message: 'Passage deleted' }
-
+    
     const response = {
       status: 200,
+      body
+    }
+    
+    return response
+  })
+}
+
+const setPassageDiffResult = async (req, res) => {
+  const passageId = req.params.id
+  const userId = req.user.userId
+  const passageDiffResults = req.body.passageDiffResults
+  console.log('passageDiffResults', passageDiffResults)
+  
+  responseHandler(res, async () => {
+    const passageFound = await passageModel.getPassage(passageId)
+    if(passageFound.user != userId) throw errorResponse(401, 'User does not own this passage.')
+    
+    const isModified = await passageModel.setDiffResult(passageId, passageDiffResults)
+    if ( !isModified.nModified ) throw errorResponse(400, 'Something wrong setting the passage Diff result')
+    
+    const body = { message: 'Diff result added' }
+    
+    const response = {
+      status: 201,
       body
     }
 
@@ -142,6 +166,7 @@ module.exports = {
   createFavouritePassage,
   getFavouritePassageList,
   deleteFavouritePassage,
+  setPassageDiffResult,
   createRandomPassage,
   getRandomPassagesList,
   getRandomPassage,

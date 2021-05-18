@@ -1,14 +1,14 @@
 const mongoose = require('mongoose')
 
 const passageSquema = new mongoose.Schema({
-  content:    { type: String, required: true },
-  reference:  { type: String, required: true },
-  bible:      { type: String, required: true },
-  language:   Number,  // 1=English, 2=Spanish
-  user:       { type: mongoose.Schema.Types.ObjectId },
-  isFavourite:   { type: Boolean, default: false },
-  isRandom:   { type: Boolean, default: false },
-  tries:      [{ result: Number }]
+  content:      { type: String, required: true },
+  reference:    { type: String, required: true },
+  bible:        { type: String, required: true },
+  language:     Number,  // 1=English, 2=Spanish
+  user:         { type: mongoose.Schema.Types.ObjectId },
+  isFavourite:  { type: Boolean, default: false },
+  isRandom:     { type: Boolean, default: false },
+  diffResults:  [Number]
 })
 
 const Passage = mongoose.model('Passage', passageSquema)
@@ -68,11 +68,24 @@ const getRandomPassage = async language => {
       throw new Error(error)
     })
 }
+  
+const setDiffResult = async (passageId, diffResult) => {
+  const query = { _id: passageId }
+  const pushThis = { $push: {diffResults: diffResult} }
+  
+  return await Passage.updateOne(query, pushThis)
+    .then( data => data)
+    .catch( error => {
+      console.log('error', error)
+      throw new Error(error)
+    })
+}
 
 module.exports = {
   savePassage,
   getPassage,
   getPassages,
   deletePassage,
-  getRandomPassage
+  getRandomPassage,
+  setDiffResult
 }

@@ -7,7 +7,7 @@ const authenticate = async (req, res, next) => {
   try {
     const token = req.headers.authorization.replace('Bearer ', '')
     const payload = userModel.verifyToken(token)
-    console.log('payload', payload)
+    //console.log('payload', payload)
     req.user = payload
     next()
   } catch (error) {
