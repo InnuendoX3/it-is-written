@@ -31,7 +31,7 @@ routes.post('/login', userController.login)
 // Favourites passages
 routes.get('/passages', auth.authenticate, passageController.getFavouritePassages)
 routes.post('/passages', auth.authenticate, passageController.addFavouritePassage)
-routes.delete('/passages/:id', auth.authenticate, passageController.deletePassage)
+routes.delete('/passages/:id', auth.authenticate, passageController.deleteFavouritePassage)
 
 
 /// Admin rountes
@@ -39,6 +39,7 @@ routes.delete('/passages/:id', auth.authenticate, passageController.deletePassag
 // Random passages
 routes.post('/passages/random', auth.authenticate, auth.isAdmin, passageController.createRandomPassages)
 routes.get('/passages/random/all', auth.authenticate, auth.isAdmin , passageController.getAllRandomPassages)
+routes.delete('/passages/random/:id', auth.authenticate, auth.isAdmin, passageController.deleteRandomPassage)
 
 routes.all('*', (_, res) => res.status(404).send('Page Not Found'))
 

@@ -4,13 +4,13 @@ const { LANGUAGES } = require('../constants')
 
 const addFavouritePassage = async (req, res) => {
   const userId = req.user.userId
+  const passage = {
+    ...req.body,
+    isFavourite: true,
+    user: userId
+  }
 
   responseHandler(res, async() => {
-    const passage = {
-      ...req.body,
-      isFavourite: true,
-      user: userId
-    }
     const passageSaved = await passageModel.savePassage(passage)
     const body = {
       message: 'Passage saved as favourite',
@@ -27,9 +27,9 @@ const addFavouritePassage = async (req, res) => {
 
 const getFavouritePassages = async (req, res) => {
   const userId = req.user.userId
+  const query = { isFavourite: true, user: userId }
 
   responseHandler(res, async () => {
-    const query = { isFavourite: true, user: userId }
     const passages = await passageModel.getPassages(query) // Add later userID to find
     const response = {
       status: 200,
@@ -40,11 +40,11 @@ const getFavouritePassages = async (req, res) => {
   })
 }
 
-const deletePassage = async (req, res) =>{
-  responseHandler(res, async () => {
-    const passageId = req.params.id
-    const userId = req.user.userId
+const deleteFavouritePassage = async (req, res) =>{
+  const passageId = req.params.id
+  const userId = req.user.userId
 
+  responseHandler(res, async () => {
     const passageFound = await passageModel.getPassage(passageId)
     if(passageFound.user != userId) throw errorResponse(401, 'User does not own this passage.')
   
@@ -54,7 +54,7 @@ const deletePassage = async (req, res) =>{
     const body = { message: 'Passage deleted' }
 
     const response = {
-      status: 201,
+      status: 200,
       body
     }
 
@@ -66,13 +66,14 @@ const deletePassage = async (req, res) =>{
 //// Random Pasages ////
 
 const createRandomPassages = async (req, res) => {
+  const userId = req.user.userId
+  const passage = {
+    ...req.body,
+    user: userId,
+    isRandom: true
+  }
+
   responseHandler(res, async() => {
-    const userId = req.user.userId
-    const passage = {
-      ...req.body,
-      user: userId,
-      isRandom: true
-    }
     const passageSaved = await passageModel.savePassage(passage)
     const body = {
       message: 'Random passage created',
@@ -88,8 +89,9 @@ const createRandomPassages = async (req, res) => {
 }
 
 const getAllRandomPassages = async (req, res) => {
+  const query = { isRandom: true }
+
   responseHandler(res, async () => {
-    const query = { isRandom: true }
     const passages = await passageModel.getPassages(query)
     const response = {
       status: 200,
@@ -115,11 +117,33 @@ const getRandomPassage = async (req, res) => {
   })
 }
 
+const deleteRandomPassage = async (req, res) => {
+  const passageId = req.params.id
+
+  responseHandler(res, async () => {
+    const passageFound = await passageModel.getPassage(passageId)
+    if ( !passageFound.isRandom ) throw errorResponse(400, 'This is not a random passage')
+
+    const deleteResponse = await passageModel.deletePassage(passageId)
+    if ( !deleteResponse.deletedCount ) throw errorResponse(400, 'Passage not found')
+
+    const body = { message: 'Random passage deleted' }
+
+    const response = {
+      status: 200,
+      body
+    }
+
+    return response
+  })
+}
+
 module.exports = {
   addFavouritePassage,
   getFavouritePassages,
-  deletePassage,
+  deleteFavouritePassage,
   createRandomPassages,
   getAllRandomPassages,
-  getRandomPassage
+  getRandomPassage,
+  deleteRandomPassage
 }
