@@ -29,7 +29,16 @@ const savePassage = async passage => {
   })
 }
 
-const getPassages = async (query) => {
+const getPassage = async passageId => {
+  return await Passage.findOne({_id: passageId})
+    .then( data => data)
+    .catch( error => {
+      console.log(error)
+      throw new Error(error)
+    })
+}
+
+const getPassages = async query => {
   return await Passage.find(query)
     .then( data => data)
     .catch( error => {
@@ -38,9 +47,8 @@ const getPassages = async (query) => {
     })
 }
 
-const deletePassage = async (passageId) => {
-  const query = {_id: passageId}
-  return await Passage.deleteOne(query)
+const deletePassage = async passageId => {
+  return await Passage.deleteOne({_id: passageId})
     .then( data => data)
     .catch( error => {
       console.log(error)
@@ -48,7 +56,7 @@ const deletePassage = async (passageId) => {
     })
 }
 
-const getRandomPassage = async (language) => {
+const getRandomPassage = async language => {
   const query = { isRandom: true, language: language }
   const count = await Passage.countDocuments(query)
   const randomNumber = Math.floor(Math.random() * count)
@@ -62,6 +70,7 @@ const getRandomPassage = async (language) => {
 
 module.exports = {
   savePassage,
+  getPassage,
   getPassages,
   deletePassage,
   getRandomPassage

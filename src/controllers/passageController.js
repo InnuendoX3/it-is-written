@@ -42,9 +42,13 @@ const getFavouritePassages = async (req, res) => {
 
 const deletePassage = async (req, res) =>{
   responseHandler(res, async () => {
-    const passageId = req.params.id  
-    const deleteResponse = await passageModel.deletePassage(passageId)
+    const passageId = req.params.id
+    const userId = req.user.userId
 
+    const passageFound = await passageModel.getPassage(passageId)
+    if(passageFound.user != userId) throw errorResponse(401, 'User does not own this passage.')
+  
+    const deleteResponse = await passageModel.deletePassage(passageId)
     if (!deleteResponse.deletedCount) throw errorResponse(400, 'Passage not found') 
 
     const body = { message: 'Passage deleted' }
