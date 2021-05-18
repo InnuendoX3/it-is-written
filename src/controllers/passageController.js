@@ -67,8 +67,10 @@ const deletePassage = async (req, res) =>{
 
 const createRandomPassages = async (req, res) => {
   responseHandler(res, async() => {
+    const userId = req.user.userId
     const passage = {
       ...req.body,
+      user: userId,
       isRandom: true
     }
     const passageSaved = await passageModel.savePassage(passage)

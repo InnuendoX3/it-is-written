@@ -37,8 +37,8 @@ routes.delete('/passages/:id', auth.authenticate, passageController.deletePassag
 /// Admin rountes
 
 // Random passages
-routes.post('/passages/random', passageController.createRandomPassages)
-routes.get('/passages/random/all', passageController.getAllRandomPassages)
+routes.post('/passages/random', auth.authenticate, auth.isAdmin, passageController.createRandomPassages)
+routes.get('/passages/random/all', auth.authenticate, auth.isAdmin , passageController.getAllRandomPassages)
 
 routes.all('*', (_, res) => res.status(404).send('Page Not Found'))
 
