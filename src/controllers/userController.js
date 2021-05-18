@@ -3,8 +3,8 @@ const { responseHandler } = require("./responseHandler")
 
 
 const register = async (req, res) => {
-  const { username, email, password} = req.body
-  const userToSignUp = { username, email, password}
+  const { username, email, password, role } = req.body
+  const userToSignUp = { username, email, password, role}
 
   responseHandler(res, async () => {
     const userCreated = await userModel.createUser(userToSignUp)

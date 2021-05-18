@@ -282,3 +282,34 @@ Return the results of comparing the Bible text with the written by the user
   }
 }
 ```
+
+
+### Users
+Passages saved by admin, 'language' key should be fylled.
+
+#### POST /api/register
+Creates an user and login at once
+> Body
+```json
+{
+	"username": "Juancho",
+	"email": "juancho@jotmail.com",
+	"password": "12345",
+	"role": "user"
+}
+```
+> Output
+```json
+{
+  "message": "User signed up and logged in!",
+  "user": {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGEzNmM0M2Y0NmEzZDU2NmMzNmE3xNGMiLCJ1ddc2VybIkp1YW5jaG8iLCJyb2xlIjoidXNlciIsImlhdCI6MTYyMTMyMjSwiZXhwIjoxNjIxMzMzNjE5fQ.OWXqLa8vaLZ1oi-4I3uEthUfh6ebSTVnW_Y",
+    "user": {
+      "tempID": "60a36c43f46a3d566c36a14c", // TODO Delete
+      "username": "Juancho",
+      "email": "juancho@jotmail.com",
+      "role": "user"
+    }
+  }
+}
+```

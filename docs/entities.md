@@ -108,3 +108,13 @@
   "matchedWords": 14
 }
 ```
+
+### User
+```json
+{
+  "username": "Pedro",
+  "email":    "pedro@hotmail.com",
+  "password": "2d2nf9n3fs3T#s",
+  "role":     "user" // or 'admin'
+}
+```

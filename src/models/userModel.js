@@ -7,7 +7,8 @@ const { errorResponse } = require('../controllers/responseHandler')
 const userSquema = new mongoose.Schema({
   username: { type: String, required: true },
   email:    { type: String, required: true },
-  password: { type: String, required: true}
+  password: { type: String, required: true},
+  role:     { type: String, required: true} // 'user' or 'admin'
 })
 
 const User = mongoose.model('User', userSquema)
@@ -19,7 +20,8 @@ const createUser = async userData => {
   const userToSave = {
     username: userData.username,
     email: userData.email,
-    password: bcrypt.hashSync(userData.password, 10)
+    password: bcrypt.hashSync(userData.password, 10),
+    role: userData.role
   }
 
   const userFound = await User.findOne({ email: userToSave.email })
@@ -43,7 +45,7 @@ const login = async (email, password) => {
   if(!passMatched) throw errorResponse(400, 'Credentials not valid (p)')
 
   const token = jwt.sign(
-    { userId: userFound._id, username: userFound.username },
+    { userId: userFound._id, username: userFound.username, role: userFound.role },
     process.env.JWT_SECRET,
     { expiresIn: '3h'}
   )
@@ -51,7 +53,8 @@ const login = async (email, password) => {
   const userLoggedInfo = {
     tempID: userFound._id,  // TODO: delete, just testing
     username: userFound.username,
-    email: userFound.email
+    email: userFound.email, 
+    role: userFound.role    // TODO: delete? Already sent via token
   }
 
   const response = {
