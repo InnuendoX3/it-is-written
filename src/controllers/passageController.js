@@ -2,7 +2,7 @@ const passageModel = require ('../models/passageModel')
 const { responseHandler, errorResponse } = require('./responseHandler')
 const { LANGUAGES } = require('../constants')
 
-const addFavouritePassage = async (req, res) => {
+const createFavouritePassage = async (req, res) => {
   const userId = req.user.userId
   const passage = {
     ...req.body,
@@ -25,7 +25,7 @@ const addFavouritePassage = async (req, res) => {
   })
 }
 
-const getFavouritePassages = async (req, res) => {
+const getFavouritePassageList = async (req, res) => {
   const userId = req.user.userId
   const query = { isFavourite: true, user: userId }
 
@@ -65,7 +65,7 @@ const deleteFavouritePassage = async (req, res) =>{
 
 //// Random Pasages ////
 
-const createRandomPassages = async (req, res) => {
+const createRandomPassage = async (req, res) => {
   const userId = req.user.userId
   const passage = {
     ...req.body,
@@ -88,7 +88,7 @@ const createRandomPassages = async (req, res) => {
   })
 }
 
-const getAllRandomPassages = async (req, res) => {
+const getRandomPassagesList = async (req, res) => {
   const query = { isRandom: true }
 
   responseHandler(res, async () => {
@@ -139,11 +139,11 @@ const deleteRandomPassage = async (req, res) => {
 }
 
 module.exports = {
-  addFavouritePassage,
-  getFavouritePassages,
+  createFavouritePassage,
+  getFavouritePassageList,
   deleteFavouritePassage,
-  createRandomPassages,
-  getAllRandomPassages,
+  createRandomPassage,
+  getRandomPassagesList,
   getRandomPassage,
   deleteRandomPassage
 }

@@ -7,7 +7,8 @@ const passageSquema = new mongoose.Schema({
   language:   Number,  // 1=English, 2=Spanish
   user:       { type: mongoose.Schema.Types.ObjectId },
   isFavourite:   { type: Boolean, default: false },
-  isRandom:   { type: Boolean, default: false }
+  isRandom:   { type: Boolean, default: false },
+  tries:      [{ result: Number }]
 })
 
 const Passage = mongoose.model('Passage', passageSquema)
