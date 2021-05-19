@@ -36,6 +36,7 @@
 ```
 
 ### A single Verse
+-- Not used --
 ```json
 {
   "id": "JHN.14.15",
@@ -49,14 +50,21 @@
 ### A Passage
 ```json
 {
+  "isFavourite": false,
   "isRandom": true,
+  "diffResults": [
+    11,
+    100,
+    100,
+    19
+  ],
   "_id": "60a0dca618096e5bc8f2229f",
   "content": "“How can you be reborn when you're old?” Nicodemus asked. “You can't go back into your mother's womb and be born a second time!” “I tell you the truth, you can't enter God's kingdom unless you are born of water and the Spirit,” Jesus told him.",
   "reference": "John 3:4-5",
   "bible": "Free Bible Version",
   "language": 1, // 1=English, 2=Spanish
-  "user": "",
-  "__v": 0
+  "user": "60a2893afb77f64aa8f35889",
+  "average": 57.5
 }
 ```
 

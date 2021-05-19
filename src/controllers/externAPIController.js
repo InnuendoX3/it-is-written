@@ -141,7 +141,7 @@ const getPassage = (req, res) => {
     const passageRange = req.params.passageRange
     const passageFromApi = await bibleAPI.getPassage(bibleAbbr, passageRange)
     const passage = {
-      verseRange: passageFromApi.id, // Not used on client
+      passageRange: passageFromApi.id, // Not used on client
       reference: passageFromApi.reference,
       content: htmlPassageToText(passageFromApi.content),
       copyright: cleanCopyrightText(passageFromApi.copyright),
