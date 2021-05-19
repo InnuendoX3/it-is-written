@@ -30,8 +30,24 @@ const savePassage = async passage => {
   })
 }
 
-const getPassage = async passageId => {
+/* const getPassage = async passageId => {
   return await Passage.findOne({_id: passageId})
+    .then( data => data)
+    .catch( error => {
+      console.log(error)
+      throw new Error(error)
+    })
+} */
+
+const getPassages = async query => {
+  const projection = {
+    content: 1,
+    reference: 1,
+    bible: 1,
+    language: 1
+  }
+
+  return await Passage.find(query, projection)
     .then( data => data)
     .catch( error => {
       console.log(error)
@@ -39,8 +55,21 @@ const getPassage = async passageId => {
     })
 }
 
-const getPassages = async query => {
-  return await Passage.find(query)
+const getPassage = async passageId => {
+  const query = { _id: passageId}
+  const projection = {
+    isFavourite: 1,
+    isRandom: 1,
+    diffResults: 1,
+    content: 1,
+    reference: 1,
+    bible: 1,
+    language: 1,
+    user: 1,
+    average: {$avg: '$diffResults'}
+  }
+
+  return await Passage.findOne(query, projection)
     .then( data => data)
     .catch( error => {
       console.log(error)
@@ -59,9 +88,16 @@ const deletePassage = async passageId => {
 
 const getRandomPassage = async language => {
   const query = { isRandom: true, language: language }
+  const projection = {
+    content: 1,
+    reference: 1,
+    bible: 1,
+    language: 1,
+    user: 1
+  }
   const count = await Passage.countDocuments(query)
   const randomNumber = Math.floor(Math.random() * count)
-  return await Passage.findOne(query).skip(randomNumber)
+  return await Passage.findOne(query, projection).skip(randomNumber)
     .then( data => data)
     .catch( error => {
       console.log(error)
@@ -71,9 +107,9 @@ const getRandomPassage = async language => {
   
 const setDiffResult = async (passageId, diffResult) => {
   const query = { _id: passageId }
-  const pushThis = { $push: {diffResults: diffResult} }
+  const toUpdate = { $push: { diffResults: diffResult } }
   
-  return await Passage.updateOne(query, pushThis)
+  return await Passage.updateOne(query, toUpdate)
     .then( data => data)
     .catch( error => {
       console.log('error', error)

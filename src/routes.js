@@ -28,6 +28,7 @@ routes.post('/login', userController.login)
 //// Private routes for users ////
 // Favourites passages
 routes.get('/passages', auth.authenticate, passageController.getFavouritePassageList)
+routes.get('/passages/:id', auth.authenticate, passageController.getFavouritePassage)
 routes.post('/passages', auth.authenticate, passageController.createFavouritePassage)
 routes.delete('/passages/:id', auth.authenticate, passageController.deleteFavouritePassage)
 routes.patch('/passages/:id', auth.authenticate, passageController.setPassageDiffResult)

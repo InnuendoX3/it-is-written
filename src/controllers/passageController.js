@@ -40,6 +40,22 @@ const getFavouritePassageList = async (req, res) => {
   })
 }
 
+const getFavouritePassage = async (req, res) => {
+  const passageId = req.params.id
+  const userId = req.user.userId
+  responseHandler(res, async () => {
+    const passageFound = await passageModel.getPassage(passageId)
+    if(passageFound.user != userId) throw errorResponse(401, 'User does not own this passage.')
+
+    const response = {
+      status: 200,
+      body: passageFound
+    }
+
+    return response
+  })
+}
+
 const deleteFavouritePassage = async (req, res) =>{
   const passageId = req.params.id
   const userId = req.user.userId
@@ -66,7 +82,6 @@ const setPassageDiffResult = async (req, res) => {
   const passageId = req.params.id
   const userId = req.user.userId
   const passageDiffResults = req.body.passageDiffResults
-  console.log('passageDiffResults', passageDiffResults)
   
   responseHandler(res, async () => {
     const passageFound = await passageModel.getPassage(passageId)
@@ -165,6 +180,7 @@ const deleteRandomPassage = async (req, res) => {
 module.exports = {
   createFavouritePassage,
   getFavouritePassageList,
+  getFavouritePassage,
   deleteFavouritePassage,
   setPassageDiffResult,
   createRandomPassage,
