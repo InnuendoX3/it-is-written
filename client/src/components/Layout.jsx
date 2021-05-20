@@ -6,12 +6,27 @@ import UserKit from '../data/UserKit'
 import Navbar from './Navbar'
 
 export default function Layout({children}) {
-  const { userData } = useContext(UserContext)
+  const { userData, setUserData } = useContext(UserContext)
 
-  useEffect(() => {
-    const token = UserKit.loadToken
+
+
+  useEffect( () => {
+    const token = UserKit.loadToken()
+
+    async function reloadUserInfo() {
+      await UserKit.getUserInfo()
+        .then(data => {
+          const userData = data.data
+          console.log('data', data)
+          setUserData(userData)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
+
     if(!userData && token) {
-      console.log('TODO: Refreshed page lost the user on Context')
+      reloadUserInfo()
     }
 
   }, [])
