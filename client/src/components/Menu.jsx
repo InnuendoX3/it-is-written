@@ -6,7 +6,9 @@ export default function Menu() {
     <menu>
       <NavLink to='/'>It Is Written</NavLink> - 
       <NavLink to='/select'>Select Passage</NavLink> -
-      <NavLink to='/random'>Random Passage</NavLink>
+      <NavLink to='/random'>Random Passage</NavLink> -
+      <NavLink to='/register'>Register</NavLink> -
+      <NavLink to='/login'>Login</NavLink> -
     </menu>
   )
 }

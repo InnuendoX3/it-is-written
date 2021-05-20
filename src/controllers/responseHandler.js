@@ -18,7 +18,7 @@ const responseHandler = async (res, action) => {
 
     res.status(status).json({ 
       status: status,
-      error: message
+      message: message
      })
   }
 }

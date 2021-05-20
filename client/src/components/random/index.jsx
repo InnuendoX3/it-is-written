@@ -9,7 +9,7 @@ export default function Random() {
   const [isLanguageSelected, setIsLanguageSelected] = useState(false)
 
   async function handleClick(langId) {
-    const url = `/api/passages/random/?language=${langId}`
+    const url = `/api/passages/random/passage/?language=${langId}`
     await axios(url)
       .then( res => {
         setPassage(res.data)
