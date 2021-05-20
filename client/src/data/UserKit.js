@@ -53,6 +53,10 @@ class UserKit {
     sessionStorage.removeItem(this.JWT_TOKEN)
   }
 
+  loadToken() {
+    return sessionStorage.getItem(this.JWT_TOKEN)
+  }
+
 
 }
 

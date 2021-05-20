@@ -41,9 +41,22 @@ const login = async (req, res) => {
   })
 }
 
+const getMyInfo = async (req, res) => {
+  const userId = req.user.userId
+  responseHandler(res, async () => {
+    const userInfo = await userModel.getUser(userId)
+    const response = {
+      status: 200,
+      body: userInfo
+    }
+    return response
+  })
+}
+
 
 
 module.exports = {
   register,
-  login
+  login,
+  getMyInfo
 }

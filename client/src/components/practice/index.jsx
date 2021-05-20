@@ -16,10 +16,6 @@ export default function Practice(props) {
 
   useEffect(() => {
     setUserText('') //Reset textarea from old userText
-/*     console.log('passage', passage)
-    if( !passage ) {
-      props.history.push('/')
-    } */
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

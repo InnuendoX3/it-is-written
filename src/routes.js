@@ -29,6 +29,8 @@ routes.post('/login', userController.login)
 routes.post('/passages/random', auth.authenticate, auth.isAdmin, passageController.createRandomPassage)
 routes.get('/passages/random', auth.authenticate, auth.isAdmin , passageController.getRandomPassagesList)
 routes.delete('/passages/random/:id', auth.authenticate, auth.isAdmin, passageController.deleteRandomPassage)
+// User info
+routes.get('/me', auth.authenticate, userController.getMyInfo)
 
 //// Private routes for users ////
 // Favourites passages

@@ -65,6 +65,20 @@ const login = async (email, password) => {
   return response
 }
 
+const getUser = async userId => {
+  const userFound = await User.findById(userId)
+  if(!userFound) throw errorResponse(400, 'No user found')
+
+  const userFoundInfo = {
+    tempID: userFound._id,  // TODO: delete, just testing
+    username: userFound.username,
+    email: userFound.email, 
+    role: userFound.role    // TODO: delete? Already sent via token
+  }
+
+  return userFoundInfo
+}
+
 const verifyToken = token => {
   const validToken = jwt.verify(token, process.env.JWT_SECRET)
   return validToken
@@ -74,5 +88,6 @@ const verifyToken = token => {
 module.exports = {
   createUser,
   login,
+  getUser,
   verifyToken
 }

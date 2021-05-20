@@ -415,3 +415,16 @@ Login user
   }
 }
 ```
+
+#### POST /api/me
+Login user
+> Headers - authorization: Bearer JWT
+> Output
+```json
+{
+  "tempID": "60a2893afb77f64aa8f35889",
+  "username": "Pedro",
+  "email": "pedro@jotmail.com",
+  "role": "user"
+}
+```
