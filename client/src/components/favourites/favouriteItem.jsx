@@ -6,7 +6,9 @@ import { BibleContext } from '../../contexts/BibleContext'
 export default function FavouriteItem(props) {
   const { setPassage } = useContext(BibleContext)
   const { bible, content, reference, _id, average } = props.favourite
+
   const shortedContent = shortContent(content)
+  const averageRound = Math.round(average)
 
 
   function shortContent(str) {
@@ -17,7 +19,6 @@ export default function FavouriteItem(props) {
   function handleClick() {
     PassageKit.getFavourite(_id)
       .then( res => {
-        console.log(res.data)
         setPassage(res.data)
         props.history.push('/practice')
       })
@@ -29,7 +30,7 @@ export default function FavouriteItem(props) {
   return (
     <div onClick={handleClick}>
       <p>{shortedContent}</p>
-      <p>{reference} - average: {average}</p>
+      <p>{reference} - average: {averageRound} %</p>
 
     </div>
   )

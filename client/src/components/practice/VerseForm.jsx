@@ -12,7 +12,6 @@ export default function VerseForm(props) {
     await PassageKit.compareTexts(passage, userText)
       .then( async data => {
         setTextDiff(data)
-        console.log('data.percentage', data.percentage)
         await PassageKit.setDiffResult(passage._id, data.percentage)
       })
       .catch( error => console.log(error))

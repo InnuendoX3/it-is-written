@@ -6,12 +6,15 @@ function UserProvider({children}) {
 
   const [userData, setUserData] = useState(null)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false)
 
   const contextValues = {
     userData,
     setUserData,
     isAuthenticated,
-    setIsAuthenticated
+    setIsAuthenticated,
+    isAdmin,
+    setIsAdmin
   }
 
   return (

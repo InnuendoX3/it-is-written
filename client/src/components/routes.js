@@ -19,6 +19,7 @@ export default function Routes() {
         <Route path='/practice' component={Practice} />
         <Route path='/random' component={Random} />
         <Route path='/favourites' component={Favourites} />
+        <Route path='/create' component={Register} />
         <Route path='/register' component={Register} />
         <Route path='/login' component={Login} />
       </Layout>

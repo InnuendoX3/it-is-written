@@ -6,7 +6,7 @@ import UserKit from '../data/UserKit'
 import Navbar from './Navbar'
 
 export default function Layout({children}) {
-  const { userData, setUserData, setIsAuthenticated } = useContext(UserContext)
+  const { userData, setUserData, setIsAuthenticated, setIsAdmin } = useContext(UserContext)
 
 
 
@@ -24,6 +24,7 @@ export default function Layout({children}) {
           console.log('data', data)
           setUserData(userData)
           setIsAuthenticated(true)
+          setIsAdmin(userData.role === 'admin')
         })
         .catch(error => {
           console.log(error)

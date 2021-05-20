@@ -4,7 +4,7 @@ import { UserContext } from '../../contexts/UserContext'
 import UserKit from '../../data/UserKit'
 
 export default function Login(props) {
-  const { setUserData, setIsAuthenticated } = useContext(UserContext)
+  const { setUserData, setIsAuthenticated, setIsAdmin } = useContext(UserContext)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -12,12 +12,12 @@ export default function Login(props) {
 
   
   function loginUser(data) {
-    console.log(data.data.user)
     const token = data.data.user.token
     const userInfo = data.data.user.user
     setTokenInStorage(token)
     setUserData(userInfo)
     setIsAuthenticated(true)
+    setIsAdmin(userInfo.role === 'admin')
     setErrorMessage('')
     props.history.push('/')
   }
