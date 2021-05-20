@@ -14,12 +14,18 @@ export default function BibleVerse(props) {
   function handleClick() {
     setReadingMode(!readingMode)
     setWrittingMode(!writtingMode)
+    console.log('passage', passage)
+  }
+
+  function handleFavourite() {
+    
   }
 
   return (
     <div className='little-spc'>
       <p>{passage.content}</p>
       <button onClick={handleClick} >I'm ready!</button>
+      <button onClick={handleFavourite} >Add as favourite</button>
     </div>
   )
 }

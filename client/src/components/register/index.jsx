@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from '../../contexts/UserContext'
 
-import User from '../../data/User'
+import UserKit from '../../data/UserKit'
 
 export default function Register(props) {
   const { setUserData, setIsAuthenticated } = useContext(UserContext)
@@ -31,7 +31,7 @@ export default function Register(props) {
   }
 
   function createUser() {
-    User.register(username, email, password)
+    UserKit.register(username, email, password)
       .then( data => {
         loginUser(data)
       })
@@ -52,7 +52,7 @@ export default function Register(props) {
   }
 
   function setTokenInStorage(token) {
-    User.saveToken(token)
+    UserKit.saveToken(token)
   }
 
   function handleUsername(e) {

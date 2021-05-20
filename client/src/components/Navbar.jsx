@@ -3,13 +3,13 @@ import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { UserContext } from '../contexts/UserContext'
 
-import User from '../data/User'
+import UserKit from '../data/UserKit'
 
 export default function Navbar() {
   const { isAuthenticated, setIsAuthenticated, userData, setUserData } = useContext(UserContext)
 
   function logout() {
-    User.removeToken()
+    UserKit.removeToken()
     setIsAuthenticated(false)
     setUserData(null)
   }

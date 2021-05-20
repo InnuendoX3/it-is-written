@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from '../../contexts/UserContext'
 
-import User from '../../data/User'
+import UserKit from '../../data/UserKit'
 
 export default function Login(props) {
   const { setUserData, setIsAuthenticated } = useContext(UserContext)
@@ -23,7 +23,7 @@ export default function Login(props) {
   }
 
   function setTokenInStorage(token) {
-    User.saveToken(token)
+    UserKit.saveToken(token)
   }
 
   function handleEmail(e) {
@@ -36,7 +36,7 @@ export default function Login(props) {
 
   function authenticateUser(e) {
     e.preventDefault()
-    User.login(email, password)
+    UserKit.login(email, password)
       .then( data => {
         loginUser(data)
       })
