@@ -3,9 +3,9 @@ import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { UserContext } from '../contexts/UserContext'
 
-import User from './../data/User'
+import User from '../data/User'
 
-export default function Menu() {
+export default function Navbar() {
   const { isAuthenticated, setIsAuthenticated } = useContext(UserContext)
 
   function logout() {
@@ -14,7 +14,7 @@ export default function Menu() {
   }
 
   return (
-    <menu>
+    <nav>
       <NavLink to='/'>It Is Written</NavLink> - 
       <NavLink to='/select'>Select Passage</NavLink> -
       <NavLink to='/random'>Random Passage</NavLink> -
@@ -22,6 +22,6 @@ export default function Menu() {
       { !isAuthenticated && <NavLink to='/login'>Login</NavLink> } -
       { isAuthenticated && <NavLink to='/' onClick={logout}>Logout</NavLink>}
 
-    </menu>
+    </nav>
   )
 }
