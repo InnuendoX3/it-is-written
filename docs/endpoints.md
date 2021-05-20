@@ -390,3 +390,28 @@ Creates an user and login at once
   }
 }
 ```
+
+#### POST /api/login
+Login user
+> Body
+```json
+{
+	"email": "maria@jotmail.com",
+	"password": "12345"
+}
+```
+> Output
+```json
+{
+  "message": "Logged in!",
+  "user": {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGEyODk1OWZiNzdmNjRhYThemMzU4OGIiLCJ1c2VybmFtZSI6Ik1hcmXIiLCJpYXQiOjE2MjE1MDM0NTQsImV4cCI6MTYyMTUyNTA1NH0.sIX6jttGgAKiCvdNkfxD-sAv3FtinAZPYYswuNSf_qBx0",
+    "user": {
+      "tempID": "60a28959fb77f64aa8f3588b",
+      "username": "Maria",
+      "email": "maria@jotmail.com",
+      "role": "user"
+    }
+  }
+}
+```
