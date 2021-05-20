@@ -15,32 +15,42 @@ export default function BibleVerse(props) {
     writtingMode
   } = props.modes
 
-  function handleFavouritePassageInfo(data) {
-    const passageSaved = data.data.body
-    setPassage(passageSaved)
-    setIsFavourite(passageSaved.isFavourite)
-  }
 
   function handleClick() {
     setReadingMode(!readingMode)
     setWrittingMode(!writtingMode)
   }
   
-  function handleFavourite() {
-    console.log('passage', passage)
+  function setFavourite() {
     PassageKit.saveFavourite(passage)
       .then( data => {
-        handleFavouritePassageInfo(data)
-        //setPassage()
+        const passageSaved = data.data.body
+        setPassage(passageSaved)
+        setIsFavourite(passageSaved.isFavourite)
       })
+      .catch( error => {
+        console.log(error)
+      })  
+  }
 
-    
+  function unsetFavourite() {
+    PassageKit.deleteFavourite(passage._id)
+      .then( data => {
+        if (data.status === 200) {
+          setIsFavourite(false)
+        }
+      })
+      .catch( error => {
+        console.log(error)
+      }) 
   }
 
   useEffect(() => {
     // Avoid error when refreshing page
     if( !passage ) {
       props.history.push('/')
+    } else {
+      setIsFavourite(passage.isFavourite)
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -50,10 +60,10 @@ export default function BibleVerse(props) {
       { passage && <p>{passage.content}</p>}
       <button onClick={handleClick} >I'm ready!</button>
       { !isFavourite &&
-        <button onClick={handleFavourite} >Add as favourite</button>
+        <button onClick={setFavourite} >Add as favourite</button>
       }
       { isFavourite &&  
-        <button onClick={handleFavourite} >Delete from favourite</button>
+        <button onClick={unsetFavourite} >Delete from favourite</button>
       }
     </div>
   )

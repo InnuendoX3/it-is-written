@@ -64,7 +64,6 @@ class UserKit {
       .catch( error => {
         console.log(error)
       })
-
   }
 
   saveToken(token) {

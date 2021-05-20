@@ -6,12 +6,16 @@ import UserKit from '../data/UserKit'
 import Navbar from './Navbar'
 
 export default function Layout({children}) {
-  const { userData, setUserData } = useContext(UserContext)
+  const { userData, setUserData, setIsAuthenticated } = useContext(UserContext)
 
 
 
   useEffect( () => {
     const token = UserKit.loadToken()
+
+    if(!userData && token) {
+      reloadUserInfo()
+    }
 
     async function reloadUserInfo() {
       await UserKit.getUserInfo()
@@ -19,17 +23,14 @@ export default function Layout({children}) {
           const userData = data.data
           console.log('data', data)
           setUserData(userData)
+          setIsAuthenticated(true)
         })
         .catch(error => {
           console.log(error)
         })
     }
+  }, [])// eslint-disable-line react-hooks/exhaustive-deps
 
-    if(!userData && token) {
-      reloadUserInfo()
-    }
-
-  }, [])
   return (
     <div>
       <Navbar />

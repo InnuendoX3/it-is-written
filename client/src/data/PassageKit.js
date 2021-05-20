@@ -1,8 +1,6 @@
 import axios from 'axios'
 
 class PassageKit {
-  REGISTER_URL = '/api/register'
-  LOGIN_URL = '/api/login'
   JWT_TOKEN = 'JWT_TOKEN'
 
   getPrivateHeaders() {
@@ -23,6 +21,17 @@ class PassageKit {
     const headers = this.getPrivateHeaders()
     
     return axios.post(url, passage, headers)
+      .then( data => data)
+      .catch( error => {
+        throw error
+      })
+  }
+
+  async deleteFavourite(passageId) {
+    const url = `api/passages/${passageId}`
+    const headers = this.getPrivateHeaders()
+    
+    return axios.delete(url, headers)
       .then( data => data)
       .catch( error => {
         throw error
