@@ -51,10 +51,9 @@ const login = async (email, password) => {
   )
 
   const userLoggedInfo = {
-    tempID: userFound._id,  // TODO: delete, just testing
     username: userFound.username,
     email: userFound.email, 
-    role: userFound.role    // TODO: delete? Already sent via token
+    role: userFound.role
   }
 
   const response = {
@@ -70,10 +69,9 @@ const getUser = async userId => {
   if(!userFound) throw errorResponse(400, 'No user found')
 
   const userFoundInfo = {
-    tempID: userFound._id,  // TODO: delete, just testing
     username: userFound.username,
     email: userFound.email, 
-    role: userFound.role    // TODO: delete? Already sent via token
+    role: userFound.role
   }
 
   return userFoundInfo

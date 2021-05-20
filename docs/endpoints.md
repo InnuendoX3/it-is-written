@@ -382,7 +382,6 @@ Creates an user and login at once
   "user": {
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGEzNmM0M2Y0NmEzZDU2NmMzNmE3xNGMiLCJ1ddc2VybIkp1YW5jaG8iLCJyb2xlIjoidXNlciIsImlhdCI6MTYyMTMyMjSwiZXhwIjoxNjIxMzMzNjE5fQ.OWXqLa8vaLZ1oi-4I3uEthUfh6ebSTVnW_Y",
     "user": {
-      "tempID": "60a36c43f46a3d566c36a14c", // TODO Delete
       "username": "Juancho",
       "email": "juancho@jotmail.com",
       "role": "user"
@@ -407,7 +406,6 @@ Login user
   "user": {
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGEyODk1OWZiNzdmNjRhYThemMzU4OGIiLCJ1c2VybmFtZSI6Ik1hcmXIiLCJpYXQiOjE2MjE1MDM0NTQsImV4cCI6MTYyMTUyNTA1NH0.sIX6jttGgAKiCvdNkfxD-sAv3FtinAZPYYswuNSf_qBx0",
     "user": {
-      "tempID": "60a28959fb77f64aa8f3588b",
       "username": "Maria",
       "email": "maria@jotmail.com",
       "role": "user"
@@ -422,7 +420,6 @@ Login user
 > Output
 ```json
 {
-  "tempID": "60a2893afb77f64aa8f35889",
   "username": "Pedro",
   "email": "pedro@jotmail.com",
   "role": "user"
