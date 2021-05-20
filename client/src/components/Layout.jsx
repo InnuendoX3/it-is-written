@@ -1,12 +1,12 @@
 import React from 'react'
 
-import Menu from './Menu'
+import Navbar from './Navbar'
 
 export default function Layout({children}) {
   return (
     <div>
-      <Menu />
-      <main>
+      <Navbar />
+      <main className='little-spc'>
         {children}
       </main>
     </div>

@@ -4,7 +4,7 @@ import { UserContext } from '../../contexts/UserContext'
 import User from '../../data/User'
 
 export default function Register(props) {
-  const {setUserData, setIsAuthenticated} = useContext(UserContext)
+  const { setUserData, setIsAuthenticated } = useContext(UserContext)
 
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
@@ -42,11 +42,12 @@ export default function Register(props) {
   }
 
   function loginUser(data) {
-    const userInfo = data.data.user.user
     const token = data.data.user.token
-    setUserData(userInfo)
+    const userInfo = data.data.user.user
     setTokenInStorage(token)
+    setUserData(userInfo)
     setIsAuthenticated(true)
+    setErrorMessage('')
     props.history.push('/')
   }
 
@@ -81,10 +82,10 @@ export default function Register(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type='text' value={username} onChange={handleUsername} required />
-      <input type='email' value={email} onChange={handleEmail} required />
-      <input type='password' value={password} onChange={handlePassword} required />
-      <input type='password' value={passwordConfirmation} onChange={handlePasswordConfirmation} required />
+      <input type='text' value={username} onChange={handleUsername} placeholder='Username' required />
+      <input type='email' value={email} onChange={handleEmail} placeholder='E-mail' required />
+      <input type='password' value={password} onChange={handlePassword} placeholder='Password' required />
+      <input type='password' value={passwordConfirmation} onChange={handlePasswordConfirmation} placeholder='Confirm Password' required />
       <input type="submit" value="Create user" />
       <p>{errorMessage}</p>
     </form>

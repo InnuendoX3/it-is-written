@@ -1,12 +1,20 @@
 import axios from 'axios'
 
 class User {
-  //BASE_URL = '/api'
+  REGISTER_URL = '/api/register'
+  LOGIN_URL = '/api/login'
   JWT_TOKEN = 'JWT_TOKEN'
 
+  
+  getPublicHeaders() {
+    return {
+      'Content-Type': 'application/json'
+    }
+  }
+
   async register(username, email, password) {
-    const url = '/api/register'
-    const headers = {'Content-Type': 'application/json'}
+    const url = this.REGISTER_URL
+    const headers = this.getPublicHeaders()
     const registerInfo = {
       username: username,
       email: email,
@@ -19,6 +27,22 @@ class User {
       .catch( error => {
         throw error
       })
+  }
+
+  async login(email, password) {
+    const url = this.LOGIN_URL
+    const headers = this.getPublicHeaders()
+    const loginInfo = {
+      email: email,
+      password: password
+    }
+
+    return axios.post(url, loginInfo, headers)
+      .then( data => data)
+      .catch( error => {
+        throw error
+      })
+
   }
 
   saveToken(token) {

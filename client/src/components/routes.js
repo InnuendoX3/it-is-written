@@ -7,6 +7,7 @@ import Practice from './practice'
 import Layout from './Layout'
 import Random from './random'
 import Register from './register'
+import Login from './login'
 
 export default function Routes() {
   return (
@@ -17,6 +18,7 @@ export default function Routes() {
         <Route path='/practice' component={Practice} />
         <Route path='/random' component={Random} />
         <Route path='/register' component={Register} />
+        <Route path='/login' component={Login} />
       </Layout>
     </Switch>
   )
