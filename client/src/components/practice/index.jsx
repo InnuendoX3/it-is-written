@@ -6,8 +6,8 @@ import BibleVerse from './BibleVerse'
 import VerseForm from './VerseForm'
 import Results from './Results'
 
-export default function Practice() {
-  const { setUserText } = useContext(BibleContext)
+export default function Practice(props) {
+  const { setUserText, passage } = useContext(BibleContext)
 
   const [readingMode, setReadingMode] = useState(true)
   const [writtingMode, setWrittingMode] = useState(false)
@@ -16,6 +16,10 @@ export default function Practice() {
 
   useEffect(() => {
     setUserText('') //Reset textarea from old userText
+/*     console.log('passage', passage)
+    if( !passage ) {
+      props.history.push('/')
+    } */
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
@@ -27,9 +31,10 @@ export default function Practice() {
               setReadingMode,
               readingMode,
               setWrittingMode,
-              writtingMode
+              writtingMode,
             }
-          } 
+          }
+          history={props.history}
         /> 
       }
 

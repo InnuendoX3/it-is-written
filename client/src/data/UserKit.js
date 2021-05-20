@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-class User {
+class UserKit {
   REGISTER_URL = '/api/register'
   LOGIN_URL = '/api/login'
   JWT_TOKEN = 'JWT_TOKEN'
@@ -8,7 +8,7 @@ class User {
   
   getPublicHeaders() {
     return {
-      'Content-Type': 'application/json'
+      headers:{ 'Content-Type': 'application/json' }      
     }
   }
 
@@ -56,4 +56,4 @@ class User {
 
 }
 
-export default new User()
+export default new UserKit()
