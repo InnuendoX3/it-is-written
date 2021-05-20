@@ -44,7 +44,8 @@ const getPassages = async query => {
     content: 1,
     reference: 1,
     bible: 1,
-    language: 1
+    language: 1,
+    average: {$avg: '$diffResults'}
   }
 
   return await Passage.find(query, projection)

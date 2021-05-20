@@ -192,7 +192,8 @@ ONLY REGISTERED USERS: Return a list with favourite passages saved by user
     "content": "“How can you be reborn when you're old?” Nicodemus asked. “You can't go back into your mother's womb and be born a second time!”",
     "reference": "John 3:4",
     "bible": "Free Bible Version",
-    "language": null
+    "language": null,
+    "average": 70
   },
   ...
 ]
