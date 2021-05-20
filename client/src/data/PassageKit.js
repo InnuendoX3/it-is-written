@@ -37,6 +37,31 @@ class PassageKit {
         throw error
       })
   }
+
+  async compareTexts(passage, userText) {
+    const url = `/api/texts/compare`
+    const body = { 
+      bibleText: passage.content,
+      userText: userText
+     }
+    
+    return axios.post(url, body)
+      .then( res => res.data)
+      .catch( error => console.log(error))
+  }
+
+  async setDiffResult(passageId, result) {
+    const url = `/api/passages/${passageId}`
+    const resultData = { passageDiffResult: result}
+    const headers = this.getPrivateHeaders()
+
+    return axios.patch(url, resultData, headers)
+      .then( data => data)
+      .catch( error => {
+        throw error
+      })
+  }
+
 }
 
 export default new PassageKit()

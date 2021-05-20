@@ -269,7 +269,7 @@ ONLY REGISTERED USERS: Delete a favourite passage
 > Body
 ```json
 {
-	"passageDiffResults": 97
+	"passageDiffResult": 97
 }
 ```
 > Output

@@ -1,26 +1,22 @@
 import React, { useContext } from 'react'
-import axios from 'axios'
 
 import { BibleContext } from '../../contexts/BibleContext'
+import PassageKit from '../../data/PassageKit'
 
 
 export default function VerseForm(props) {
   const { passage, userText, setUserText, setTextDiff } = useContext(BibleContext)
   const { setWrittingMode, setShowResults } = props.modes
 
-  function getDiff() {
-    const url = `/api/texts/compare`
-
-    const body = { 
-      bibleText: passage.content,
-      userText: userText
-     }
-    
-    axios.post(url, body)
-      .then( res => {
-        return setTextDiff(res.data)
+  async function getDiff() {
+    await PassageKit.compareTexts(passage, userText)
+      .then( async data => {
+        setTextDiff(data)
+        console.log('data.percentage', data.percentage)
+        await PassageKit.setDiffResult(passage._id, data.percentage)
       })
       .catch( error => console.log(error))
+
   }
   
   function handleOnChange(e) {

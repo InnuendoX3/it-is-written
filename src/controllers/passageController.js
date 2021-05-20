@@ -81,13 +81,13 @@ const deleteFavouritePassage = async (req, res) =>{
 const setPassageDiffResult = async (req, res) => {
   const passageId = req.params.id
   const userId = req.user.userId
-  const passageDiffResults = req.body.passageDiffResults
+  const passageDiffResult = req.body.passageDiffResult
   
   responseHandler(res, async () => {
     const passageFound = await passageModel.getPassage(passageId)
     if(passageFound.user != userId) throw errorResponse(401, 'User does not own this passage.')
     
-    const isModified = await passageModel.setDiffResult(passageId, passageDiffResults)
+    const isModified = await passageModel.setDiffResult(passageId, passageDiffResult)
     if ( !isModified.nModified ) throw errorResponse(400, 'Something wrong setting the passage Diff result')
     
     const body = { message: 'Diff result added' }
