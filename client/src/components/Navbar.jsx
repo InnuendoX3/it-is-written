@@ -21,6 +21,7 @@ export default function Navbar() {
       <NavLink to='/random'>Random Passage</NavLink> -
       { !isAuthenticated && <NavLink to='/register'>Register</NavLink> } -
       { !isAuthenticated && <NavLink to='/login'>Login</NavLink> } -
+      { isAuthenticated && <NavLink to='/favourites'>My favourites</NavLink>} -
       { userData && <span>{userData.username}</span> } -
       { isAuthenticated && <NavLink to='/' onClick={logout}>Logout</NavLink>}
 

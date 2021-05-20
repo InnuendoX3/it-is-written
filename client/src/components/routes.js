@@ -6,6 +6,7 @@ import SelectPassage from './select'
 import Practice from './practice'
 import Layout from './Layout'
 import Random from './random'
+import Favourites from './favourites'
 import Register from './register'
 import Login from './login'
 
@@ -17,6 +18,7 @@ export default function Routes() {
         <Route path='/select' component={SelectPassage} />
         <Route path='/practice' component={Practice} />
         <Route path='/random' component={Random} />
+        <Route path='/favourites' component={Favourites} />
         <Route path='/register' component={Register} />
         <Route path='/login' component={Login} />
       </Layout>

@@ -16,12 +16,23 @@ class PassageKit {
     return sessionStorage.getItem(this.JWT_TOKEN)
   }
 
+  async getFavourite(id) {
+    const url = `api/passages/${id}`
+    const headers = this.getPrivateHeaders()
+
+    return axios.get(url, headers)
+      .then( res => res)
+      .catch( error => {
+        throw error
+      })
+  }
+
   async saveFavourite(passage) {
     const url = 'api/passages'
     const headers = this.getPrivateHeaders()
     
     return axios.post(url, passage, headers)
-      .then( data => data)
+      .then( res => res)
       .catch( error => {
         throw error
       })
@@ -32,7 +43,7 @@ class PassageKit {
     const headers = this.getPrivateHeaders()
     
     return axios.delete(url, headers)
-      .then( data => data)
+      .then( res => res)
       .catch( error => {
         throw error
       })
@@ -56,7 +67,18 @@ class PassageKit {
     const headers = this.getPrivateHeaders()
 
     return axios.patch(url, resultData, headers)
-      .then( data => data)
+      .then( res => res)
+      .catch( error => {
+        throw error
+      })
+  }
+
+  async getFavouriteList() {
+    const url= 'api/passages'
+    const headers = this.getPrivateHeaders()
+
+    return axios.get(url, headers)
+      .then( res => res)
       .catch( error => {
         throw error
       })
