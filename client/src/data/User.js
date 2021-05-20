@@ -25,6 +25,10 @@ class User {
     sessionStorage.setItem(this.JWT_TOKEN, token);
   }
 
+  removeToken() {
+    sessionStorage.removeItem(this.JWT_TOKEN)
+  }
+
 
 }
 

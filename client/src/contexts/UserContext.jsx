@@ -5,7 +5,7 @@ export const UserContext = createContext(null)
 function UserProvider({children}) {
 
   const [userData, setUserData] = useState(null)
-  const [isAuthenticated, setIsAuthenticated] = useState('')
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   const contextValues = {
     userData,

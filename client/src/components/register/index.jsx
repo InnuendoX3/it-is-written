@@ -3,8 +3,8 @@ import { UserContext } from '../../contexts/UserContext'
 
 import User from '../../data/User'
 
-export default function Register() {
-  const {userData, setUserData} = useContext(UserContext)
+export default function Register(props) {
+  const {setUserData, setIsAuthenticated} = useContext(UserContext)
 
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
@@ -30,6 +30,30 @@ export default function Register() {
     return true
   }
 
+  function createUser() {
+    User.register(username, email, password)
+      .then( data => {
+        loginUser(data)
+      })
+      .catch( error => {
+        console.log(error)
+        setErrorMessage(error.response.data.message)
+      })
+  }
+
+  function loginUser(data) {
+    const userInfo = data.data.user.user
+    const token = data.data.user.token
+    setUserData(userInfo)
+    setTokenInStorage(token)
+    setIsAuthenticated(true)
+    props.history.push('/')
+  }
+
+  function setTokenInStorage(token) {
+    User.saveToken(token)
+  }
+
   function handleUsername(e) {
     setUsername(e.target.value)
   }
@@ -50,23 +74,9 @@ export default function Register() {
     e.preventDefault()
     setErrorMessage('')
     const isGoodPassword = controlPassword()
-    
     if (isGoodPassword) {
-      User.register(username, email, password)
-        .then( data => {
-          setUserData(data.data.user.user)
-          User.saveToken(data.data.user.token)
-        })
-        .catch( error => {
-          console.log(error)
-          setErrorMessage(error.response.data.message)
-        })
-
-      
-
+      createUser()
     }
-
-
   }
 
   return (
