@@ -5,7 +5,7 @@ import { BibleContext } from '../../contexts/BibleContext'
 
 export default function FavouriteItem(props) {
   const { setPassage } = useContext(BibleContext)
-  const { bible, content, reference, _id, average } = props.favourite
+  const { content, reference, _id, average } = props.favourite
 
   const shortedContent = shortContent(content)
   const averageRound = Math.round(average)

@@ -7,7 +7,7 @@ import VerseForm from './VerseForm'
 import Results from './Results'
 
 export default function Practice(props) {
-  const { setUserText, passage } = useContext(BibleContext)
+  const { setUserText } = useContext(BibleContext)
 
   const [readingMode, setReadingMode] = useState(true)
   const [writtingMode, setWrittingMode] = useState(false)
@@ -19,7 +19,7 @@ export default function Practice(props) {
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className='App'>
+    <div className=''>
       { readingMode && 
         <BibleVerse
           modes={

@@ -44,7 +44,7 @@ export default function SelectPassage () {
   const propsList = {content, setContent, selection, setSelection}
 
   return (
-    <div className="App">
+    <div className="">
 
       { bibles && <BibleList {...propsList} /> }
 

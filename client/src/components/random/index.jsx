@@ -19,7 +19,7 @@ export default function Random() {
   }
 
   return (
-    <div className='App'>
+    <div className=''>
       <p>Practice with a random passage</p>
 
       <button onClick={() => handleClick(1)}>English</button>
