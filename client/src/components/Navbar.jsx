@@ -21,17 +21,60 @@ export default function Navbar() {
   }
 
   return (
-    <nav>
-      <NavLink to='/'>It Is Written</NavLink> - 
-      <NavLink to='/select'>Select Passage</NavLink> -
-      <NavLink to='/random'>Random Passage</NavLink> -
-      { !isAuthenticated && <NavLink to='/register'>Register</NavLink> } -
-      { !isAuthenticated && <NavLink to='/login'>Login</NavLink> } -
-      { isAuthenticated && <NavLink to='/favourites'>My favourites</NavLink>} -
-      { isAdmin && <NavLink to='/create'>Create</NavLink> } -
-      { userData && <span>{userData.username}</span> } -
-      { isAuthenticated && <NavLink to='/' onClick={logout}>Logout</NavLink>}
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div className="container-fluid">
 
+        <NavLink className="navbar-brand" to='/'>It Is Written</NavLink>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        
+        <div className="collapse navbar-collapse" id="navbarColor01">
+
+          <ul className="navbar-nav me-auto">
+
+            <li className="nav-item">
+              <NavLink className="nav-link" to='/select'>Select Passage</NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink className="nav-link" to='/random'>Random Passage</NavLink>  
+            </li>
+
+            { !isAuthenticated && 
+              <li className="nav-item">
+                <NavLink className="nav-link" to='/register'>Register</NavLink> 
+              </li>
+            }
+            { !isAuthenticated &&
+              <li className="nav-item">            
+                <NavLink className="nav-link" to='/login'>Login</NavLink>
+              </li>
+            }
+            { isAuthenticated &&
+              <li className="nav-item"> 
+                <NavLink className="nav-link" to='/favourites'>My favourites</NavLink>
+              </li>
+            }
+            { isAdmin &&
+              <li className="nav-item"> 
+                <NavLink className="nav-link" to='/create'>Create</NavLink>
+              </li>
+            }
+            { userData &&
+              <li className="nav-item"> 
+                <span>{userData.username}</span>
+              </li>
+            }
+            { isAuthenticated &&
+              <li className="nav-item">
+                <NavLink className="nav-link" to='/' onClick={logout}>Logout</NavLink>
+              </li>
+            }
+
+          </ul>
+        </div>
+      </div>
     </nav>
   )
 }
