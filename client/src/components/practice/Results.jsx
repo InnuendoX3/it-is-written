@@ -2,6 +2,9 @@ import React, { useContext } from 'react'
 
 import { BibleContext } from '../../contexts/BibleContext'
 
+import Button from 'react-bootstrap/Button'
+
+
 export default function Results(props) {
   const { passage, userText, setUserText, textDiff } = useContext(BibleContext)
   const { setReadingMode, setWrittingMode, setShowResults } = props.modes
@@ -20,13 +23,14 @@ export default function Results(props) {
   return (
     <div>
       <h2>{passage.reference}</h2>
-      <p>{passage.content}</p>
-      <h2>Your text:</h2>
-      <p>{userText}</p>
+      <p className='results_texts'>{passage.content}</p>
+      <h4>Your text:</h4>
+      <p className='results_texts'>{userText}</p>
 
-      { textDiff &&  <h3>{ textDiff.percentage } %</h3> }
-      
-      <button onClick={handleTryAgain}>Try again</button>
+      <div className='buttons_horizontal'>
+        { textDiff &&  <h3>{ textDiff.percentage } %</h3> }
+        <Button onClick={handleTryAgain}>Try again</Button>
+      </div>
     </div>
   )
 }

@@ -44,7 +44,7 @@ export default function BibleList(props) {
       <h3 onClick={handleOnTitleClick} >{bibleTitle}</h3>
 
       { !isSelected && 
-        <div className='bible_list'>
+        <div className='button_list_col'>
           { content.bibles.map( (bible, index) => {
               return (
                 <Button

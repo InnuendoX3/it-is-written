@@ -37,7 +37,7 @@ export default function Layout({children}) {
   return (
     <div>
       <NavigationBar />
-      <Container>
+      <Container className='h_space'>
         {children}
       </Container>
     </div>

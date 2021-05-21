@@ -12,10 +12,11 @@ h1, h2, h3, h4 {
   justify-content: center;
 }
 
-.bible_list {
+.button_list_col {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: 5vh;
 }
 
 .botton_list {
@@ -30,11 +31,32 @@ h1, h2, h3, h4 {
   font-size: 18px;
   text-align: center;
 }
+.user_text {
+  margin: 5vh 0;
+  font-size: 18px;
+  text-align: left;
+}
+.results_texts {
+  margin-top: 2vh;
+  margin-bottom: 5vh;
+  font-size: 18px;
+  text-align: center;
+}
 
 .buttons_horizontal {
   display: flex;
   justify-content: space-between;
 }
+
+.button_right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.h_space {
+  margin-top: 5vh;
+}
+
 
 
 

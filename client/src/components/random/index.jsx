@@ -3,6 +3,7 @@ import { Redirect } from 'react-router'
 import axios from 'axios'
 
 import { BibleContext } from '../../contexts/BibleContext'
+import Button from 'react-bootstrap/Button'
 
 export default function Random() {
   const { setPassage } = useContext(BibleContext)
@@ -20,10 +21,12 @@ export default function Random() {
 
   return (
     <div className=''>
-      <p>Practice with a random passage</p>
+      <h3>Random passage</h3>
 
-      <button onClick={() => handleClick(1)}>English</button>
-      <button onClick={() => handleClick(2)}>Español</button>
+      <div className='button_list_col'>
+        <Button variant='dark' onClick={() => handleClick(1)}>English</Button>
+        <Button variant='dark' onClick={() => handleClick(2)}>Español</Button>  
+      </div>
 
       { isLanguageSelected && 
         <Redirect to='/practice' />
