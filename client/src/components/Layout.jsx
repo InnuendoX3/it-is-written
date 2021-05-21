@@ -5,6 +5,8 @@ import UserKit from '../data/UserKit'
 
 import NavigationBar from './Navbar'
 
+import Container from 'react-bootstrap/Container'
+
 export default function Layout({children}) {
   const { userData, setUserData, setIsAuthenticated, setIsAdmin } = useContext(UserContext)
 
@@ -35,9 +37,9 @@ export default function Layout({children}) {
   return (
     <div>
       <NavigationBar />
-      <main className='little-spc'>
+      <Container>
         {children}
-      </main>
+      </Container>
     </div>
   )
 }

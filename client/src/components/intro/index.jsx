@@ -1,16 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-//import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
 
 export default function Intro() {
 
   return (
-    <div className=''>
+    <Container className=''>
       <h1><em>It Is Written</em></h1>
       <p>"This Book of the Law must not depart from your mouth. Meditate on it day and night so that you may act carefully according to all that is written in it."</p>
-      <p>Read, retain and write</p>
-      <Link to="/select" >Let's practice</Link>
-    </div>
+      <h4>Read, retain and write</h4>
+      <div>
+        <Link className='f-cen-cen'  to="/select" >Let's practice</Link>
+      </div>
+    </Container>
   )
 }

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
+import Button from 'react-bootstrap/Button'
+
 export default function BibleList(props) {
   const { content, setContent, selection, setSelection } = props
 
@@ -42,15 +44,16 @@ export default function BibleList(props) {
       <h3 onClick={handleOnTitleClick} >{bibleTitle}</h3>
 
       { !isSelected && 
-        <div className='little-spc'>
+        <div className='bible_list'>
           { content.bibles.map( (bible, index) => {
               return (
-                <button 
+                <Button
+                  variant='dark'
                   key={index} 
                   onClick={ e => selectBible(bible, e)}
                 > 
                   {bible.name} 
-                </button>
+                </Button>
               )
             })
           }

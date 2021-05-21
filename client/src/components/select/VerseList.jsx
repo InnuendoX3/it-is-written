@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react'
 import { Redirect } from 'react-router'
 import axios from 'axios'
 
+import Button from 'react-bootstrap/Button'
+
 import { BibleContext } from '../../contexts/BibleContext'
 
 export default function VerseList(props) {
@@ -71,12 +73,12 @@ export default function VerseList(props) {
       <h3 onClick={handleOnTitleClick}>{verseNumberTitle}</h3>
 
       { !isSelected &&
-        <div className='little-spc'>
+        <div className='botton_list'>
           { verseList.map( (verse, index) => {
               return (
-                <button key={index} onClick={ e => selectVerse(verse, e)}>
+                <Button key={index} onClick={ e => selectVerse(verse, e)} variant="light">
                   {verse.number}
-                </button>
+                </Button>
               )
             })        
           }

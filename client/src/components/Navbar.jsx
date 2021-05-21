@@ -24,14 +24,15 @@ export default function NavigationBar() {
   }
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="md">
 
       <Navbar.Brand href='/'>It Is Written</Navbar.Brand>
 
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#link">Link</Nav.Link>
+          
           <Nav.Link href='/select'>Select Passage</Nav.Link>
 
           <Nav.Link href='/random'>Random Passage</Nav.Link>  

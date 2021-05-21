@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
+import Button from 'react-bootstrap/Button'
+
 export default function ChapterList(props) {
   const { content, setContent, selection, setSelection } = props 
 
@@ -32,12 +34,12 @@ export default function ChapterList(props) {
       <h3 onClick={handleOnTitleClick}>{chapterNumberTitle}</h3>
 
       { !isSelected &&
-        <div className='little-spc'>
+        <div className='botton_list'>
           { content.chapters.map( (chapter, index) => {
               return (
-                <button key={index} onClick={ e => selectChapter(chapter, e)} >
+                <Button key={index} onClick={ e => selectChapter(chapter, e)} variant="light" >
                   {chapter.number}
-                </button>
+                </Button>
               )
             })
           }

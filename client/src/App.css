@@ -1,8 +1,42 @@
 
-
-.little-spc {
-  padding: 1vh 0;
+h1, h2, h3, h4 {
+  text-align: center;
 }
+
+.t-center {
+  text-align: center;
+}
+
+.f-cen-cen {
+  display: flex;
+  justify-content: center;
+}
+
+.bible_list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.botton_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px;
+}
+
+.bible_text {
+  margin: 5vh 0;
+  font-size: 18px;
+  text-align: center;
+}
+
+.buttons_horizontal {
+  display: flex;
+  justify-content: space-between;
+}
+
+
 
 @media only screen and (max-width: 600px) {
   textarea {

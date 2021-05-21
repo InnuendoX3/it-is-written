@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from 'react'
 import { BibleContext } from '../../contexts/BibleContext'
 
 import PassageKit from '../../data/PassageKit'
+import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
 
 export default function BibleVerse(props) {
   const { passage, setPassage } = useContext(BibleContext)
@@ -57,14 +59,18 @@ export default function BibleVerse(props) {
 
   return (
     <div className='little-spc'>
-      { passage && <p>{passage.content}</p>}
-      <button onClick={handleClick} >I'm ready!</button>
-      { !isFavourite &&
-        <button onClick={setFavourite} >Add as favourite</button>
+      { passage && 
+        <Container className='bible_text'>{passage.content}</Container>
       }
-      { isFavourite &&  
-        <button onClick={unsetFavourite} >Delete from favourite</button>
-      }
+      <Container className='buttons_horizontal'>
+        { !isFavourite &&
+          <Button variant="light" onClick={setFavourite} >Add as favourite</Button>
+        }
+        { isFavourite &&  
+          <Button variant="warning" onClick={unsetFavourite} >Delete from favourite</Button>
+        }
+        <Button onClick={handleClick} >I'm ready!</Button>
+      </Container>
     </div>
   )
 }
