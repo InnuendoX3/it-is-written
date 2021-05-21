@@ -3,6 +3,9 @@ import { UserContext } from '../../contexts/UserContext'
 
 import UserKit from '../../data/UserKit'
 
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+
 export default function Register(props) {
   const { setUserData, setIsAuthenticated } = useContext(UserContext)
 
@@ -81,13 +84,17 @@ export default function Register(props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type='text' value={username} onChange={handleUsername} placeholder='Username' required />
-      <input type='email' value={email} onChange={handleEmail} placeholder='E-mail' required />
-      <input type='password' value={password} onChange={handlePassword} placeholder='Password' required />
-      <input type='password' value={passwordConfirmation} onChange={handlePasswordConfirmation} placeholder='Confirm Password' required />
-      <input type="submit" value="Create user" />
+    <Form onSubmit={handleSubmit}>
+      <Form.Group>
+        <Form.Control type='text' value={username} onChange={handleUsername} placeholder='Username' required />
+        <Form.Control type='email' value={email} onChange={handleEmail} placeholder='E-mail' required />
+        <Form.Control type='password' value={password} onChange={handlePassword} placeholder='Password' required />
+        <Form.Control type='password' value={passwordConfirmation} onChange={handlePasswordConfirmation} placeholder='Confirm Password' required />
+      </Form.Group>
+      <Form.Group className='button_right'>
+        <Button type="submit" variant="primary">Create user</Button>
+      </Form.Group>
       <p>{errorMessage}</p>
-    </form>
+    </Form>
   )
 }

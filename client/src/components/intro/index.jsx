@@ -11,7 +11,7 @@ export default function Intro() {
       <p>"This Book of the Law must not depart from your mouth. Meditate on it day and night so that you may act carefully according to all that is written in it."</p>
       <h4>Read, retain and write</h4>
       <div>
-        <Link className='f-cen-cen'  to="/select" >Let's practice</Link>
+        <Link className='f-cen-cen badge badge-dark'  to="/select" >Let's practice</Link>
       </div>
     </Container>
   )

@@ -3,6 +3,9 @@ import { UserContext } from '../../contexts/UserContext'
 
 import UserKit from '../../data/UserKit'
 
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+
 export default function Login(props) {
   const { setUserData, setIsAuthenticated, setIsAdmin } = useContext(UserContext)
 
@@ -47,11 +50,16 @@ export default function Login(props) {
   }
 
   return (
-    <form onSubmit={authenticateUser}>
-      <input type='email' value={email} onChange={handleEmail} placeholder='E-mail' required />
-      <input type='password' value={password} onChange={handlePassword} placeholder='Password' required />
-      <input type="submit" value="Login" />
+    <Form onSubmit={authenticateUser}>
+      <Form.Group>
+        <Form.Control type='email' value={email} onChange={handleEmail} placeholder='E-mail' required />
+        <Form.Control type='password' value={password} onChange={handlePassword} placeholder='Password' required />
+      </Form.Group>
+      <Form.Group className='button_right'>
+        <Button type="submit" variant="primary">Login</Button>
+      </Form.Group>
       <p>{errorMessage}</p>
-    </form>
+
+    </Form>
   )
 }

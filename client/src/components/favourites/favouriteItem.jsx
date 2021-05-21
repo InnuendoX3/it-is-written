@@ -3,6 +3,8 @@ import React, {useContext} from 'react'
 import PassageKit from '../../data/PassageKit'
 import { BibleContext } from '../../contexts/BibleContext'
 
+import Container from 'react-bootstrap/Container'
+
 export default function FavouriteItem(props) {
   const { setPassage } = useContext(BibleContext)
   const { content, reference, _id, average } = props.favourite
@@ -28,10 +30,16 @@ export default function FavouriteItem(props) {
   }
 
   return (
-    <div onClick={handleClick}>
-      <p>{shortedContent}</p>
-      <p>{reference} - average: {averageRound} %</p>
-
-    </div>
+    <Container>
+      <div className='card fav_item' onClick={handleClick}>
+        <div className='card-body'>
+          <p>{shortedContent}</p>
+          <div className='buttons_horizontal'>
+            <span>{reference}</span> 
+            <span>Average: {averageRound}%</span>
+          </div>
+        </div>
+      </div>
+    </Container>
   )
 }
