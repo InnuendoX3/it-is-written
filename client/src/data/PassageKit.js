@@ -84,6 +84,17 @@ class PassageKit {
       })
   }
 
+  async saveRandom(passage) {
+    const url = 'api/passages/random'
+    const headers = this.getPrivateHeaders()
+    
+    return axios.post(url, passage, headers)
+      .then( res => res)
+      .catch( error => {
+        throw error
+      })
+  }
+
 }
 
 export default new PassageKit()

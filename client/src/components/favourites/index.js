@@ -10,7 +10,6 @@ export default function Favourites(props) {
     PassageKit.getFavouriteList()
       .then( res => {
         setFavouriteList(res.data)
-        console.log(res.data)
       })
       .catch( error => {
         console.log(error)
