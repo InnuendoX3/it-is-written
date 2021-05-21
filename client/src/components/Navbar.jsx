@@ -3,9 +3,12 @@ import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { UserContext } from '../contexts/UserContext'
 
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+
 import UserKit from '../data/UserKit'
 
-export default function Navbar() {
+export default function NavigationBar() {
   const { 
     isAuthenticated, 
     setIsAuthenticated, 
@@ -21,60 +24,39 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div className="container-fluid">
+    <Navbar bg="light" expand="lg">
 
-        <NavLink className="navbar-brand" to='/'>It Is Written</NavLink>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        
-        <div className="collapse navbar-collapse" id="navbarColor01">
+      <Navbar.Brand href='/'>It Is Written</Navbar.Brand>
 
-          <ul className="navbar-nav me-auto">
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link href="#link">Link</Nav.Link>
+          <Nav.Link href='/select'>Select Passage</Nav.Link>
 
-            <li className="nav-item">
-              <NavLink className="nav-link" to='/select'>Select Passage</NavLink>
-            </li>
+          <Nav.Link href='/random'>Random Passage</Nav.Link>  
 
-            <li className="nav-item">
-              <NavLink className="nav-link" to='/random'>Random Passage</NavLink>  
-            </li>
+          { !isAuthenticated && 
+              <Nav.Link href='/register'>Register</Nav.Link> 
+          }
+          { !isAuthenticated &&
+              <Nav.Link href='/login'>Login</Nav.Link>
+          }
+          { isAuthenticated &&
+              <Nav.Link href='/favourites'>My favourites</Nav.Link>
+          }
+          { isAdmin &&
+              <Nav.Link href='/create'>Create</Nav.Link>
+          }
+          { isAuthenticated &&
+              <Nav.Link href='/' onClick={logout}>Logout</Nav.Link>
+          }
+          { userData &&
+              <Navbar.Brand>{userData.username}</Navbar.Brand>
+          }
 
-            { !isAuthenticated && 
-              <li className="nav-item">
-                <NavLink className="nav-link" to='/register'>Register</NavLink> 
-              </li>
-            }
-            { !isAuthenticated &&
-              <li className="nav-item">            
-                <NavLink className="nav-link" to='/login'>Login</NavLink>
-              </li>
-            }
-            { isAuthenticated &&
-              <li className="nav-item"> 
-                <NavLink className="nav-link" to='/favourites'>My favourites</NavLink>
-              </li>
-            }
-            { isAdmin &&
-              <li className="nav-item"> 
-                <NavLink className="nav-link" to='/create'>Create</NavLink>
-              </li>
-            }
-            { userData &&
-              <li className="nav-item"> 
-                <span>{userData.username}</span>
-              </li>
-            }
-            { isAuthenticated &&
-              <li className="nav-item">
-                <NavLink className="nav-link" to='/' onClick={logout}>Logout</NavLink>
-              </li>
-            }
-
-          </ul>
-        </div>
-      </div>
-    </nav>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   )
 }

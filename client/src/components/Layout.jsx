@@ -3,7 +3,7 @@ import React, { useEffect, useContext } from 'react'
 import { UserContext } from '../contexts/UserContext'
 import UserKit from '../data/UserKit'
 
-import Navbar from './Navbar'
+import NavigationBar from './Navbar'
 
 export default function Layout({children}) {
   const { userData, setUserData, setIsAuthenticated, setIsAdmin } = useContext(UserContext)
@@ -34,7 +34,7 @@ export default function Layout({children}) {
 
   return (
     <div>
-      <Navbar />
+      <NavigationBar />
       <main className='little-spc'>
         {children}
       </main>
