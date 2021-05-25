@@ -62,7 +62,15 @@ export default function BibleVerse(props) {
   return (
     <div className='little-spc'>
       { passage && 
-        <Container className='bible_text'>{passage.content}</Container>
+        <Container className='bible_text_container'>
+          <div className='bible_text_content'>
+            {passage.content}
+          </div>
+          <div className='bible_text_info'>
+            <span>{passage.bible}</span>
+            <span>{passage.reference}</span>
+          </div>
+        </Container>
       }
       <Container className='button_list_col'>
         <Button variant="dark" onClick={handleClick} >I'm ready!</Button>
@@ -72,7 +80,7 @@ export default function BibleVerse(props) {
               <Button variant="light" onClick={setFavourite} >Add as favourite</Button>
             }
             { isFavourite &&  
-              <Button variant="warning" onClick={unsetFavourite} >Delete from favourite</Button>
+              <Button variant="danger" onClick={unsetFavourite} >Delete from favourite</Button>
             }
           </>
         }

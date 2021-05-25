@@ -23,7 +23,7 @@ export default function NavigationBar() {
   }
 
   return (
-    <Navbar bg="light" expand="md">
+    <Navbar bg="dark" variant="dark" expand="md">
 
       <Navbar.Brand href='/'>It Is Written</Navbar.Brand>
 
