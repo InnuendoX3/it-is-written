@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { BibleContext } from '../../contexts/BibleContext'
+import { UserContext } from '../../contexts/UserContext'
 
 import PassageKit from '../../data/PassageKit'
 import Container from 'react-bootstrap/Container'
@@ -7,6 +8,7 @@ import Button from 'react-bootstrap/Button'
 
 export default function BibleVerse(props) {
   const { passage, setPassage } = useContext(BibleContext)
+  const { isAuthenticated } = useContext(UserContext)
 
   const [isFavourite, setIsFavourite] = useState(false)
   
@@ -31,7 +33,7 @@ export default function BibleVerse(props) {
         setIsFavourite(passageSaved.isFavourite)
       })
       .catch( error => {
-        console.log(error)
+        console.log(error.response)
       })  
   }
 
@@ -62,14 +64,18 @@ export default function BibleVerse(props) {
       { passage && 
         <Container className='bible_text'>{passage.content}</Container>
       }
-      <Container className='buttons_horizontal'>
-        { !isFavourite &&
-          <Button variant="light" onClick={setFavourite} >Add as favourite</Button>
+      <Container className='button_list_col'>
+        <Button variant="dark" onClick={handleClick} >I'm ready!</Button>
+        { isAuthenticated && 
+          <>
+            { !isFavourite &&
+              <Button variant="light" onClick={setFavourite} >Add as favourite</Button>
+            }
+            { isFavourite &&  
+              <Button variant="warning" onClick={unsetFavourite} >Delete from favourite</Button>
+            }
+          </>
         }
-        { isFavourite &&  
-          <Button variant="warning" onClick={unsetFavourite} >Delete from favourite</Button>
-        }
-        <Button onClick={handleClick} >I'm ready!</Button>
       </Container>
     </div>
   )
