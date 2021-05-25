@@ -11,6 +11,8 @@ export default function VerseForm(props) {
   const { passage, userText, setUserText, setTextDiff } = useContext(BibleContext)
   const { setWrittingMode, setShowResults } = props.modes
 
+  const instructions = 'Write the Bible text you memorized'
+
   async function getDiff() {
     await PassageKit.compareTexts(passage, userText)
       .then( async data => {
@@ -34,9 +36,12 @@ export default function VerseForm(props) {
   return (
     <Form className="little-spc">
       <Form.Group>
-        <Form.Control as="textarea" className='user_text' rows={3} onChange={ e => handleOnChange(e)} value={userText} />
-        <div className='button_right'>
-          <Button onClick={handleCompare}>Let's check!</Button>
+        <Form.Control as='textarea' className='user_text' rows={3} onChange={ e => handleOnChange(e)} value={userText} />
+
+        <p className='t-center'>{instructions}</p>
+
+        <div className='button_list_col'>
+          <Button variant='dark' onClick={handleCompare}>Let's check!</Button>
         </div>
       </Form.Group>
     </Form>

@@ -11,6 +11,8 @@ export default function BibleVerse(props) {
   const { isAuthenticated } = useContext(UserContext)
 
   const [isFavourite, setIsFavourite] = useState(false)
+
+  const instructions = 'Memorize the Bible text'
   
   const { 
     setReadingMode,
@@ -72,15 +74,16 @@ export default function BibleVerse(props) {
           </div>
         </Container>
       }
+      <p className='t-center'>{instructions}</p>
       <Container className='button_list_col'>
-        <Button variant="dark" onClick={handleClick} >I'm ready!</Button>
+        <Button variant='dark' onClick={handleClick} >I'm ready!</Button>
         { isAuthenticated && 
           <>
             { !isFavourite &&
-              <Button variant="light" onClick={setFavourite} >Add as favourite</Button>
+              <Button variant='light' onClick={setFavourite} >Add as favourite</Button>
             }
             { isFavourite &&  
-              <Button variant="danger" onClick={unsetFavourite} >Delete from favourite</Button>
+              <Button variant='danger' onClick={unsetFavourite} >Delete from favourite</Button>
             }
           </>
         }

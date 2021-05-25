@@ -14,7 +14,7 @@ export default function ChapterList(props) {
     const abbr = selection.bible.abbreviation
 
     setSelection({...selection, chapter: chapter})
-    setChapterNumberTitle(`Chapter #${chapter.number}`)
+    setChapterNumberTitle(`Chapter ${chapter.number}`)
     setIsSelected(true)
 
     axios(`/api/bibles/${abbr}/chapters/${chapter.id}/verses`)

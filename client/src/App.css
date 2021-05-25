@@ -2,7 +2,7 @@ body {
   background-color:#f2f2f2
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
   text-align: center;
 }
 
@@ -39,7 +39,7 @@ h1, h2, h3, h4 {
   border-radius: 5px;
 }
 .bible_text_content {
-  padding: 5vh 3vw;
+  padding: 5vh 3vw 2vh 3vw;
 }
 .bible_text_info{
   display: flex;
@@ -73,6 +73,7 @@ h1, h2, h3, h4 {
 
 .h_space {
   margin-top: 5vh;
+  margin-bottom: 3vh;
 }
 
 .fav_item {

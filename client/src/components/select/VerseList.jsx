@@ -25,8 +25,8 @@ export default function VerseList(props) {
   }
   
   function getTitle() {
-    const initialVerseTitle = 'Select initial verse number'
-    const finalalVerseTitle = 'Select final verse number'
+    const initialVerseTitle = 'Select initial verse'
+    const finalalVerseTitle = 'Select final verse'
     return isInitialVerseList ? initialVerseTitle : finalalVerseTitle
   }
 
@@ -40,7 +40,7 @@ export default function VerseList(props) {
 
     if(isInitialVerseList) {
       setSelection({...selection, initialVerse: verse})
-      setVerseNumberTitle(`From verse nr. ${verse.number}`)
+      setVerseNumberTitle(`From verse ${verse.number}`)
       setIsSelected(true)
     } else {
       setSelection({...selection, finalVerse: verse})
