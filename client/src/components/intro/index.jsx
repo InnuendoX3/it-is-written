@@ -7,11 +7,11 @@ export default function Intro() {
   const passage = '"This Book of the Law must not depart from your mouth. Meditate on it day and night so that you may act carefully according to all that is written in it."'
   const bible = 'English Standard Version'
   const reference = 'Joshua 1:8'
-  const instructions = 'Read, memorize and write the passage back!'
+  const instructions = 'Read, memorize and write the passage again.'
 
   return (
     <Container>
-      <h1><em>It Is Written</em></h1>
+      <h1 className='app_name'>It Is Written</h1>
       <Container className='bible_text_container'>
           <div className='bible_text_content'>
             {passage}

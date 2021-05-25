@@ -29,6 +29,10 @@ h1, h2, h3, h4, h5 {
   gap: 2px;
 }
 
+.app_name {
+  font-family: 'Cinzel', serif;
+}
+
 .bible_text_container {
   background-color: white;
   margin: 5vh 0;

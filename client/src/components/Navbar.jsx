@@ -25,7 +25,7 @@ export default function NavigationBar() {
   return (
     <Navbar bg="dark" variant="dark" expand="md">
 
-      <Navbar.Brand href='/'>It Is Written</Navbar.Brand>
+      <Navbar.Brand className='app_name' href='/'>It Is Written</Navbar.Brand>
 
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
