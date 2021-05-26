@@ -25,7 +25,16 @@ export default function NavigationBar() {
   return (
     <Navbar bg="dark" variant="dark" expand="md">
 
-      <Navbar.Brand className='app_name' href='/'>It Is Written</Navbar.Brand>
+      <Navbar.Brand className='app_name' href='/'>
+        <img
+          alt=""
+          src="/ItIsWritten_logo_white.png"
+          width="30"
+          height="30"
+          className="d-inline-block align-top"
+        />{' '}
+        It Is Written
+      </Navbar.Brand>
 
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
