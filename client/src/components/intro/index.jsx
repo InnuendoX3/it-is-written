@@ -16,10 +16,6 @@ export default function Intro() {
           <div className='bible_text_content'>
             {passage}
           </div>
-          <div className='bible_text_info'>
-            <span>{bible}</span>
-            <span>{reference}</span>
-          </div>
         </Container>
       <h5>{instructions}</h5>
       <div>
@@ -28,8 +24,8 @@ export default function Intro() {
         <Link className='btn btn-dark'  to="/select" >Select a Passage</Link>
         <Link className='btn btn-dark'  to="/random" >Random Passage</Link>
       </div>
-      <div className='h_space alert alert-info t-center'>
-        Log in to save your favourite passages.
+      <div className='h_space alert alert-dark t-center'>
+        <Link to='/login'>Log in</Link> to save your favourite passages.
       </div>
 
     </Container>

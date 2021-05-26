@@ -91,10 +91,10 @@ export default function Register(props) {
         <Form.Control type='password' value={password} onChange={handlePassword} placeholder='Password' required />
         <Form.Control type='password' value={passwordConfirmation} onChange={handlePasswordConfirmation} placeholder='Confirm Password' required />
       </Form.Group>
-      <Form.Group className='button_right'>
-        <Button type="submit" variant="primary">Create user</Button>
+      <Form.Group className='button_list_col'>
+        <Button type="submit" variant="dark">Create account</Button>
       </Form.Group>
-      <p>{errorMessage}</p>
+      <p className='t-center'>{errorMessage}</p>
     </Form>
   )
 }

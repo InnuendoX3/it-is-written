@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { UserContext } from '../../contexts/UserContext'
 
 import UserKit from '../../data/UserKit'
@@ -55,10 +56,15 @@ export default function Login(props) {
         <Form.Control type='email' value={email} onChange={handleEmail} placeholder='E-mail' required />
         <Form.Control type='password' value={password} onChange={handlePassword} placeholder='Password' required />
       </Form.Group>
-      <Form.Group className='button_right'>
-        <Button type="submit" variant="primary">Login</Button>
+      <Form.Group className='button_list_col'>
+        <Button type="submit" variant="dark">Login</Button>
       </Form.Group>
       <p>{errorMessage}</p>
+      <p className='t-center'>
+        Don't have an account?
+        <Link to='/register'> Register here.</Link>
+      </p>
+      
 
     </Form>
   )
