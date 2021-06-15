@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 
 import Button from 'react-bootstrap/Button'
+import PassageKit from '../../data/PassageKit'
 
 export default function ChapterList(props) {
   const { content, setContent, selection, setSelection } = props 
@@ -9,7 +9,7 @@ export default function ChapterList(props) {
   const [chapterNumberTitle, setChapterNumberTitle] = useState('Select chapter')
   const [isSelected, setIsSelected] = useState(false)
 
-  function selectChapter(chapter, e) {
+  async function selectChapter(chapter, e) {
     e.preventDefault()
     const abbr = selection.bible.abbreviation
 
@@ -17,7 +17,7 @@ export default function ChapterList(props) {
     setChapterNumberTitle(`Chapter ${chapter.number}`)
     setIsSelected(true)
 
-    axios(`/api/bibles/${abbr}/chapters/${chapter.id}/verses`)
+    await PassageKit.getVerses(abbr, chapter.id)
       .then( res => setContent({...content, verses: res.data.verses}))
       .catch( error => console.log(error))
   }

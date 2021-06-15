@@ -12,6 +12,14 @@ class PassageKit {
     }
   }
 
+  getPublicHeaders() {
+    return {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  }
+
   loadToken() {
     return sessionStorage.getItem(this.JWT_TOKEN)
   }
@@ -94,6 +102,75 @@ class PassageKit {
         throw error
       })
   }
+
+  async getRandom(languageId) {
+    const url = `/api/passages/random/passage/?language=${languageId}`
+    const headers = this.getPublicHeaders()
+
+    return axios.get(url, headers)
+      .then( res => res )
+      .catch( error => {
+        throw error
+      })
+  }
+
+  /* Bible content: Bibles, Books, Chapters and Verses */
+  async getBibles() {
+    const url = '/api/bibles'
+    const headers = this.getPublicHeaders()
+
+    return axios.get(url, headers)
+      .then( res => res )
+      .catch( error => {
+        throw error
+      })  
+  }
+  
+  async getBooks(bibleAbbr) {
+    const url = `/api/bibles/${bibleAbbr}/books/`
+    const headers = this.getPublicHeaders()
+
+    return axios.get(url, headers)
+      .then( res => res )
+      .catch( error => {
+        throw error
+      })  
+  }
+
+  
+  async getChapters(bibleAbbr, bookId) {
+    const url = `/api/bibles/${bibleAbbr}/books/${bookId}/chapters`
+    const headers = this.getPublicHeaders()
+
+    return axios.get(url, headers)
+      .then( res => res )
+      .catch( error => {
+        throw error
+      })  
+  }
+  
+  async getVerses(bibleAbbr, chapterId) {
+    const url = `/api/bibles/${bibleAbbr}/chapters/${chapterId}/verses`
+    const headers = this.getPublicHeaders()
+
+    return axios.get(url, headers)
+      .then( res => res )
+      .catch( error => {
+        throw error
+      })  
+  }
+
+  async getPassage(bibleAbbr, initialVerseId, finalVerseId) {
+    const url = `/api/bibles/${bibleAbbr}/passages/${initialVerseId}-${finalVerseId}`
+    const headers = this.getPublicHeaders()
+
+    return axios.get(url, headers)
+      .then( res => res )
+      .catch( error => {
+        throw error
+      })  
+  }
+  
 
 }
 

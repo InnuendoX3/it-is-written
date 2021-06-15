@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 
 import Button from 'react-bootstrap/Button'
+import PassageKit from '../../data/PassageKit'
 
 export default function BookList(props) {
   const { content, setContent, selection, setSelection } = props 
@@ -10,16 +10,15 @@ export default function BookList(props) {
   const [isSelected, setIsSelected] = useState(false)
 
 
-  function selectBook(book, e) {
+  async function selectBook(book, e) {
     e.preventDefault()
     const abbr = selection.bible.abbreviation
-    const url = `/api/bibles/${abbr}/books/${book.id}/chapters`
     
     setSelection({...selection, book: book})
     setBookTitle(book.name)
     setIsSelected(true)
 
-    axios(url)
+    await PassageKit.getChapters(abbr, book.id)
       .then( res => setContent({...content, chapters: res.data.chapters}))
       .catch( error => console.log(error))
   }

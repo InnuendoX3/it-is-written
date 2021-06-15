@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { Redirect } from 'react-router' 
-import axios from 'axios'
 
 import { BibleContext } from '../../contexts/BibleContext'
+import PassageKit from '../../data/PassageKit'
 import Button from 'react-bootstrap/Button'
 
 export default function Random() {
@@ -10,13 +10,12 @@ export default function Random() {
   const [isLanguageSelected, setIsLanguageSelected] = useState(false)
 
   async function handleClick(langId) {
-    const url = `/api/passages/random/passage/?language=${langId}`
-    await axios(url)
+    await PassageKit.getRandom(langId)
       .then( res => {
         setPassage(res.data)
         setIsLanguageSelected(true)
       })
-      .catch( error => console.log(error))
+      .catch( error => console.log(error))      
   }
 
   return (

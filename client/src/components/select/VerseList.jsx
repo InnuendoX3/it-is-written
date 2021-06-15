@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react'
 import { Redirect } from 'react-router'
-import axios from 'axios'
 
 import Button from 'react-bootstrap/Button'
 
 import { BibleContext } from '../../contexts/BibleContext'
+import PassageKit from '../../data/PassageKit'
 
 export default function VerseList(props) {
   const { setPassage } = useContext(BibleContext)
@@ -49,14 +49,12 @@ export default function VerseList(props) {
     } 
   }
 
-  function getPassage(finalVerse2) {
+  async function getPassage(finalVerse2) {
     const abbr = selection.bible.abbreviation
     const initialVerseId = initialVerse.id
     const finalVerseId = finalVerse2.id
 
-    const url = `/api/bibles/${abbr}/passages/${initialVerseId}-${finalVerseId}`
-    
-    axios(url)
+    await PassageKit.getPassage(abbr, initialVerseId, finalVerseId)
       .then( res => {
         setPassage(res.data)
         setHasSelectedLastVerse(true)

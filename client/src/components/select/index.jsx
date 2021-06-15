@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import PassageKit from '../../data/PassageKit'
 
 import BibleList from './BibleList'
 import BookList from './BookList'
@@ -32,7 +32,8 @@ export default function SelectPassage () {
 
   useEffect(() => {
     async function getBibles() {
-      axios('/api/bibles')
+
+      await PassageKit.getBibles()
         .then( res => setContent({...content, bibles: res.data}))
         .catch( error => console.log(error))
     }
