@@ -23,7 +23,6 @@ export default function Layout({children}) {
       await UserKit.getUserInfo()
         .then(data => {
           const userData = data.data
-          console.log('data', data)
           setUserData(userData)
           setIsAuthenticated(true)
           setIsAdmin(userData.role === 'admin')

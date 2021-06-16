@@ -170,6 +170,13 @@ class PassageKit {
         throw error
       })  
   }
+
+  isFavourite(passage) {
+    if (passage.hasOwnProperty('isFavourite') && passage.isFavourite === true) {
+      return true
+    }
+    return false
+  }
   
 
 }
